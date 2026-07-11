@@ -1,0 +1,123 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    📊 MOMOTO CAFÉ - DNS STATUS REPORT
+═══════════════════════════════════════════════════════════════════════════════
+
+🌐 DOMINIO: www.momotocafe.com
+⏰ ESTADO ACTUAL: 11 de Julio, 2026 - EN PROPAGACIÓN GLOBAL
+
+───────────────────────────────────────────────────────────────────────────────
+✅ CONFIGURACIÓN COMPLETADA:
+───────────────────────────────────────────────────────────────────────────────
+
+1. Dominio registrado en name.com
+   • Expira: 30 de Abril de 2029
+   • Estado: Bloqueado (seguridad)
+   • Privacidad: Habilitada
+
+2. Nameservers Netlify configurados (11 Jul, 20:25 UTC)
+   ✓ dns1.p01.nsone.net
+   ✓ dns2.p01.nsone.net
+   ✓ dns3.p01.nsone.net
+   ✓ dns4.p01.nsone.net
+
+3. Sitio Netlify
+   • URL de prueba: https://momoto-cafe.netlify.app ✅ FUNCIONA
+   • Deploy ID: 6a52a01e255a5762c7e93183
+   • Estado: Live & Production Ready
+
+4. Google Search Console
+   • Propiedad registrada: www.momotocafe.com
+   • Meta tag de verificación: En el HTML ✓
+   • Sitemap enviado: sitemap.xml ✓
+   • Verificación automática: Pendiente (esperando DNS)
+
+───────────────────────────────────────────────────────────────────────────────
+📊 PROPAGACIÓN DNS ACTUAL (Último check):
+───────────────────────────────────────────────────────────────────────────────
+
+Progreso Global: 0/4 nameservers detectados (0%)
+
+Estado por Proveedor:
+✗ Google DNS (8.8.8.8)          - Sin propagar
+✗ Cloudflare DNS (1.1.1.1)      - Sin propagar
+✗ OpenDNS (208.67.222.222)      - Sin propagar
+✗ Quad9 (9.9.9.9)              - Sin propagar
+
+⏳ ESPERADO: 24-48 horas para propagación completa
+📅 Tiempo desde configuración: ~0.5 horas
+📈 Próximo check automático: monitor-dns.sh
+
+───────────────────────────────────────────────────────────────────────────────
+🔍 CÓMO MONITOREAR:
+───────────────────────────────────────────────────────────────────────────────
+
+OPCIÓN 1 - Visual (Recomendado para principiantes):
+  Abre en navegador: https://www.whatsmydns.net/?domain=momotocafe.com
+  • Muestra propagación en todo el mundo en tiempo real
+  • Interfaz visual intuitiva
+
+OPCIÓN 2 - Automático (Terminal):
+  cd /Users/armandocastilloalcocer/Desktop/Claude\ Codex/momoto-netlify
+  bash monitor-dns.sh
+  • Chequea cada 5 minutos
+  • Muestra porcentaje de propagación
+  • Se detiene cuando alcanza 100%
+
+OPCIÓN 3 - Manual (Comandos):
+  # Ver nameservers actuales
+  dig NS momotocafe.com
+  
+  # Ver dirección IP
+  dig A momotocafe.com
+  
+  # Verificar desde DNS específico
+  dig NS momotocafe.com @8.8.8.8
+
+───────────────────────────────────────────────────────────────────────────────
+⏱️  TIMELINE ESPERADO:
+───────────────────────────────────────────────────────────────────────────────
+
+0-2 horas:    Propagación a nameservers principales
+2-12 horas:   Propagación regional (América Latina, USA, Europa)
+12-24 horas:  Propagación casi completa (95%)
+24-48 horas:  Propagación global (100%) + Verificación automática en GSC
+
+───────────────────────────────────────────────────────────────────────────────
+✓ QUÉ SUCEDE CUANDO DNS ESTÉ PROPAGADO:
+───────────────────────────────────────────────────────────────────────────────
+
+1. ✅ www.momotocafe.com resolverá a los servidores Netlify
+2. ✅ Podrás visitar https://www.momotocafe.com en navegador
+3. ✅ Google Search Console verificará automáticamente
+4. ✅ Sitemap comenzará a indexarse
+5. ✅ Core Web Vitals comenzarán a registrarse
+
+───────────────────────────────────────────────────────────────────────────────
+📝 PRÓXIMAS ACCIONES:
+───────────────────────────────────────────────────────────────────────────────
+
+AHORA:
+  1. Abre whatsmydns.net para monitoreo visual
+  2. O ejecuta: bash monitor-dns.sh para monitoreo automático
+  3. Bookmark: https://www.whatsmydns.net/?domain=momotocafe.com
+
+EN 24 HORAS:
+  1. Verifica: https://www.momotocafe.com (debe funcionar)
+  2. Chequea Google Search Console para verificación automática
+  3. Valida que el sitio carga correctamente con el nuevo dominio
+
+CUANDO ESTÉ PROPAGADO:
+  1. Implementar Google Analytics 4 (opcional)
+  2. Optimizar imágenes a WebP (performance)
+  3. Configurar alertas de Core Web Vitals
+  4. Ejecutar Lighthouse audits
+
+───────────────────────────────────────────────────────────────────────────────
+📞 CONTACTO PARA SOPORTE:
+───────────────────────────────────────────────────────────────────────────────
+
+Registrador (name.com):    support@name.com
+Hosting (Netlify):         support@netlify.com
+SEO (Google):              search-central-support@google.com
+
+═══════════════════════════════════════════════════════════════════════════════
