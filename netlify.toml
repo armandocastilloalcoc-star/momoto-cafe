@@ -3,6 +3,8 @@
 [build]
   # No hay paso de compilación: se publica la raíz tal cual.
   publish = "."
+  # Base URL después de configurar dominio personalizado
+  base = "."
 
 # Cabeceras de seguridad para todas las rutas
 [[headers]]
@@ -25,3 +27,10 @@
   from = "/*"
   to = "/404.html"
   status = 404
+
+# Redirección www a no-www (opcional, comenta si prefieres www)
+# [[redirects]]
+#   from = "https://momotocafe.com/*"
+#   to = "https://www.momotocafe.com/:splat"
+#   status = 301
+#   force = true
