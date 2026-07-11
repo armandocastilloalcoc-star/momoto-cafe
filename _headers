@@ -1,0 +1,10 @@
+# Caché de assets estáticos (imágenes, SVG, favicon).
+# Sin versionado por hash → caché de 1 semana con revalidación.
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Hoja de estilos y JavaScript (sin hash en el nombre): caché corta.
+/styles.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
+/main.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600

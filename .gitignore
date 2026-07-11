@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+._*
+
+# Netlify
+.netlify/
+
+# Logs y temporales
+*.log
+node_modules/

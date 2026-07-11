@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- PLANTILLA — revisar con asesoría legal antes de publicar -->
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Aviso de Privacidad · Momoto Café</title>
+<meta name="description" content="Aviso de Privacidad de Momoto Café (Chi de México, S.A. de C.V.). Cómo recabamos, usamos y protegemos tus datos personales, y cómo ejercer tus derechos ARCO.">
+<meta name="theme-color" content="#062B26">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="canonical" href="https://www.momotocafe.com/aviso-de-privacidad">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* Subconjunto de lectura del sistema «A la sombra» */
+:root{
+  --verde-sombra:#062B26; --verde-selva:#0E4A40; --papel:#F4EFE6; --tinta:#231E1B;
+  --salvia:#8FB8A6; --cereza:#B23A2E; --arena:#E3DACB; --gris-cacao:#5B544B;
+  --papel-60:rgba(244,239,230,.60); --salvia-linea:rgba(143,184,166,.18);
+  --display:"Cormorant Garamond","Fraunces",Georgia,serif;
+  --ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--ui);font-size:1.0625rem;line-height:1.7;color:var(--tinta);
+  background:var(--papel);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--verde-selva)}
+a:hover{text-decoration:underline}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:3px solid var(--verde-sombra);outline-offset:2px;border-radius:2px}
+.on-dark :focus-visible,.site-footer :focus-visible{outline-color:var(--salvia)}
+
+.skip-link{position:absolute;left:16px;top:-64px;z-index:20;background:var(--salvia);
+  color:var(--verde-sombra);padding:12px 18px;border-radius:2px;font-weight:600;text-decoration:none;
+  transition:top .2s var(--ease)}
+.skip-link:focus{top:12px}
+
+/* Header simplificado (Verde Sombra) */
+.site-header{background:var(--verde-sombra);color:var(--papel);border-bottom:1px solid var(--salvia-linea)}
+.header-inner{max-width:900px;margin-inline:auto;padding:16px clamp(20px,5vw,40px);
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:inline-flex;align-items:center}
+.brand img{height:34px;width:auto}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--salvia);text-decoration:none;
+  font-weight:500;font-size:.9375rem;letter-spacing:.02em;min-height:44px;padding:8px 6px}
+.back-link:hover{color:var(--papel);text-decoration:none}
+.back-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* Contenido de lectura */
+main{max-width:720px;margin-inline:auto;padding:clamp(48px,8vw,88px) clamp(20px,5vw,40px)}
+.doc-eyebrow{font-family:var(--ui);font-weight:600;font-size:.75rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--verde-selva);display:inline-flex;align-items:center;gap:12px;margin-bottom:14px}
+.doc-eyebrow::before{content:"";width:26px;height:1px;background:var(--cereza)}
+h1{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.01em;
+  font-size:clamp(2.2rem,6vw,3.2rem);margin-bottom:10px}
+.doc-updated{color:var(--gris-cacao);font-size:.9375rem;margin-bottom:28px}
+.doc-plantilla{display:block;margin-bottom:32px;padding:16px 24px;background:#FBF7EF;
+  border:1px solid var(--arena);border-left:3px solid var(--cereza);border-radius:3px;
+  font-size:.9375rem;color:var(--gris-cacao)}
+h2{font-family:var(--display);font-weight:500;line-height:1.2;
+  font-size:clamp(1.4rem,3vw,1.8rem);margin:40px 0 12px;color:var(--verde-selva)}
+p{margin-bottom:16px}
+ol,ul{margin:0 0 16px 1.25rem;padding:0}
+li{margin-bottom:8px}
+strong{font-weight:600}
+.doc-cta{margin-top:48px;padding-top:24px;border-top:1px solid var(--arena)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:48px;
+  padding:16px 30px;border-radius:2px;font-family:var(--ui);font-weight:600;font-size:.875rem;
+  letter-spacing:.04em;text-decoration:none;background:var(--verde-sombra);color:var(--papel);
+  transition:transform .5s var(--ease),background .4s var(--ease)}
+.btn:hover{background:var(--verde-selva);color:var(--papel);transform:translateY(-2px);text-decoration:none}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* Footer (idéntico al del sitio) */
+.site-footer{background:var(--verde-sombra);color:var(--papel-60)}
+.footer-inner{max-width:720px;margin-inline:auto;padding:clamp(32px,5vw,48px) clamp(20px,5vw,40px);
+  text-align:center;font-size:.8125rem;line-height:1.8;border-top:1px solid var(--salvia-linea)}
+.site-footer a{color:var(--salvia);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.footer-legal{margin-top:6px}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="header-inner on-dark">
+    <a class="brand" href="index.html" aria-label="Momoto Café — inicio">
+      <img src="assets/logo-white.png" alt="Momoto Café" width="101" height="34">
+    </a>
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+</header>
+
+<main id="contenido">
+  <p class="doc-eyebrow">Legal</p>
+  <h1>Aviso de Privacidad</h1>
+  <p class="doc-updated">Última actualización: julio de 2026.</p>
+
+  <p class="doc-plantilla"><strong>Nota:</strong> este documento es una plantilla de referencia. Revísalo con asesoría legal antes de publicarlo.</p>
+
+  <h2>Responsable</h2>
+  <p><strong>CHI DE MÉXICO, S.A. de C.V.</strong>, titular de la marca Momoto Café, con RFC CME080827RH1 y domicilio fiscal en Calle Presa Palmito No. 15, Piso 1, Col. Irrigación, C.P. 11500, Alcaldía Miguel Hidalgo, Ciudad de México. Domicilio comercial: Calle 59 A No. 703 Int. 32, Col. Bojórquez, C.P. 97230, Mérida, Yucatán.</p>
+
+  <h2>Datos que recabamos</h2>
+  <p>Nombre, teléfono, correo electrónico y, en su caso, domicilio de entrega, cuando usted realiza un pedido, nos contacta por WhatsApp o correo, o se suscribe a nuestras comunicaciones.</p>
+
+  <h2>Finalidades primarias</h2>
+  <ol>
+    <li>Atender, procesar y entregar sus pedidos.</li>
+    <li>Emitir comprobantes fiscales.</li>
+    <li>Atención al cliente y aclaraciones.</li>
+  </ol>
+
+  <h2>Finalidades secundarias</h2>
+  <p>Enviarle información sobre productos, novedades y promociones. Puede oponerse escribiendo a <a href="mailto:info@momotocafe.com">info@momotocafe.com</a>.</p>
+
+  <h2>Transferencias</h2>
+  <p>No transferimos sus datos a terceros sin su consentimiento, salvo las excepciones del artículo 37 de la LFPDPPP.</p>
+
+  <h2>Derechos ARCO</h2>
+  <p>Puede Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos y revocar su consentimiento enviando su solicitud a <a href="mailto:info@momotocafe.com">info@momotocafe.com</a>.</p>
+
+  <h2>Cookies</h2>
+  <p>Este sitio usa cookies y tecnologías similares con fines de funcionamiento, analíticos y de mercadotecnia; puede deshabilitarlas en su navegador.</p>
+
+  <h2>Cambios</h2>
+  <p>Cualquier modificación se publicará en <a href="https://www.momotocafe.com/aviso-de-privacidad">www.momotocafe.com/aviso-de-privacidad</a>.</p>
+
+  <div class="doc-cta">
+    <a class="btn" href="index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>© <span id="year">2026</span> Momoto Café · Tel. <a href="tel:+529992864269">(999) 286 4269</a> · <a href="mailto:info@momotocafe.com">info@momotocafe.com</a></p>
+    <p class="footer-legal">Chi de México, S.A. de C.V. · RFC CME080827RH1</p>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
