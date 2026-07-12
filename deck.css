@@ -1,0 +1,84 @@
+/* ============================================================
+   MOMOTO CAFÉ · deck.css
+   Modo "deck": un apartado por pantalla, sin scroll de página.
+   deck.js añade la clase .deck a <html>. Sin JS → scroll normal.
+   Capa aislada: no depende de styles.css salvo por los tokens :root.
+   ============================================================ */
+
+html.deck, html.deck body{height:100%;overflow:hidden}
+html.deck body{padding-bottom:0}
+
+/* Área de contenido bajo el header fijo, sin scroll propio */
+html.deck #contenido{position:fixed;inset:var(--header-h) 0 0 0;overflow:hidden;z-index:1}
+
+/* Cada apartado = panel a pantalla completa con scroll INTERNO.
+   Se usan CLASES (no IDs) para que .panel-active pueda ganar en especificidad. */
+html.deck .hero,
+html.deck .chapter{
+  position:absolute;inset:0;margin:0;min-height:0;
+  overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  opacity:0;visibility:hidden;transform:translateY(20px);
+  transition:opacity .5s var(--ease),transform .55s var(--ease),visibility .5s;
+  background:var(--papel);
+}
+html.deck .dark{background:var(--verde-sombra)!important}
+html.deck .hero{background:var(--verde-sombra)}
+html.deck .panel-active{opacity:1;visibility:visible;transform:none;z-index:3}
+html.deck .panel-leaving{z-index:2}
+
+/* Header SIEMPRE sólido en deck (main.js lo alterna según el hero, que en deck
+   sigue geométricamente presente; aquí lo forzamos para que el menú se lea). */
+html.deck .site-header{
+  background:rgba(6,43,38,.92);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  padding-block:14px;border-bottom-color:var(--salvia-linea);
+}
+
+/* En deck el contenido siempre visible (no depende del observer de reveals) */
+html.deck [data-anim]{opacity:1!important;transform:none!important}
+
+/* Padding ajustado para una pantalla + colchón inferior para la barra WhatsApp */
+html.deck .chapter{padding-block:clamp(40px,6vh,80px)}
+html.deck .chapter--tight{padding-block:clamp(36px,5vh,64px)}
+html.deck .hero,
+html.deck .chapter{padding-bottom:calc(var(--wa-bar-h) + 44px)}
+@media(min-width:821px){
+  html.deck .hero,
+  html.deck .chapter{padding-bottom:56px}   /* en desktop no hay barra inferior */
+}
+
+/* Scrollbar discreta dentro de los paneles */
+html.deck .hero::-webkit-scrollbar,
+html.deck .chapter::-webkit-scrollbar{width:9px}
+html.deck .chapter::-webkit-scrollbar-thumb{background:rgba(6,43,38,.18);border-radius:9px}
+html.deck .dark::-webkit-scrollbar-thumb,
+html.deck .hero::-webkit-scrollbar-thumb{background:rgba(244,239,230,.22)}
+
+/* ---- Dots de navegación (lado derecho, verticales) ---- */
+.deck-dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:40;
+  display:flex;flex-direction:column;gap:12px}
+.deck-dot{width:11px;height:11px;padding:0;border-radius:50%;cursor:pointer;
+  border:2px solid rgba(6,43,38,.4);background:transparent;transition:transform .2s,background .2s,border-color .2s}
+.deck-dot:hover{border-color:var(--verde-selva);transform:scale(1.15)}
+.deck-dot.on{background:var(--verde-sombra);border-color:var(--verde-sombra);transform:scale(1.3)}
+.deck-dot:focus-visible{outline:3px solid var(--salvia);outline-offset:3px}
+/* Sobre paneles oscuros: dots claros */
+body.deck-on-dark .deck-dot{border-color:rgba(244,239,230,.6)}
+body.deck-on-dark .deck-dot:hover{border-color:var(--salvia)}
+body.deck-on-dark .deck-dot.on{background:var(--salvia);border-color:var(--salvia)}
+
+/* Pista sutil de "desliza / usa el menú" (solo primera pantalla, opcional) */
+.deck-hint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:40;
+  font-family:var(--ui);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--papel-60);pointer-events:none;opacity:0;transition:opacity .6s ease}
+body.deck-on-dark .deck-hint.show{opacity:1}
+
+@media(max-width:680px){
+  .deck-dots{right:9px;gap:10px}
+  .deck-dot{width:10px;height:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html.deck .hero,
+  html.deck .chapter{transition:opacity .2s;transform:none}
+}
