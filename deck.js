@@ -79,7 +79,7 @@
 
   function bindNav() {
     // Solo el menú y el logo cambian de apartado (NO #pagoBandBtn ni otros enlaces)
-    var navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav__links a[href^="#"], .brand[href^="#"]');
+    var navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav__links a[href^="#"], .brand[href^="#"], .deck-goto[href^="#"]');
     Array.prototype.forEach.call(navLinks, function (a) {
       var idx = idIndex((a.getAttribute("href") || "").slice(1));
       if (idx < 0) return;

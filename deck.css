@@ -90,3 +90,22 @@ body.deck-on-dark .deck-hint.show{opacity:1}
   html.deck .hero,
   html.deck .chapter{transition:opacity .2s;transform:none}
 }
+
+/* ============================================================
+   Ronda de optimización (crítica de expertos, 2026-07-12)
+   ============================================================ */
+/* Catálogo estático (indexable / sin JS): se oculta cuando hay JS */
+.js .catalogo-seo{display:none}
+.catalogo-seo{display:grid;gap:22px;max-width:62ch;margin-top:8px}
+.catalogo-seo .seo-ficha{border-top:1px solid var(--arena);padding-top:16px}
+.catalogo-seo h3{font-family:var(--display);font-weight:500;font-size:1.6rem;color:var(--verde-selva);margin:0 0 2px}
+.catalogo-seo .seo-latin{font-family:var(--display);font-style:italic;color:var(--gris-cacao);margin:0 0 6px}
+.catalogo-seo p{color:var(--tinta);margin:0;line-height:1.6}
+.catalogo-seo .seo-nota{color:var(--gris-cacao);font-size:.9rem;margin-top:6px}
+.catalogo-seo .btn{margin-top:10px;width:fit-content}
+
+/* Guiño de las 5 líneas (animales) en el hero */
+.hero-fauna{display:flex;flex-wrap:wrap;gap:8px 10px;margin:22px 0 2px}
+.hero-fauna span{font-family:var(--ui);font-weight:600;font-size:.8rem;letter-spacing:.02em;
+  color:var(--papel);background:rgba(244,239,230,.10);border:1px solid var(--salvia-borde);
+  border-radius:999px;padding:.34rem .82rem;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}

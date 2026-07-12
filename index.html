@@ -2,6 +2,7 @@
 <html lang="es-MX">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Café orgánico de especialidad de sombra | Momoto Café | Mérida</title>
 <meta name="description" content="Café orgánico de especialidad, cultivado a la sombra y tostado en Mérida. En grano o molido, desde $51 la bolsa de 100 g. Pídelo por WhatsApp.">
@@ -124,7 +125,7 @@
       "description": "Café 100% orgánico de especialidad cultivado a la sombra por pequeños productores del sureste de México (Chiapas, Veracruz y Oaxaca) y tostado en Mérida, Yucatán.",
       "slogan": "De la mata a tu taza.",
       "email": "info@momotocafe.com",
-      "telephone": "+52-999-286-4269",
+      "telephone": "+52-999-318-3525",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Calle 59 A No. 703 Int. 32, Col. Bojórquez",
@@ -150,7 +151,7 @@
           "contactType": "sales",
           "name": "Lourdes Solís Letayf",
           "email": "lousolis@momotocafe.com",
-          "telephone": "+525551040857",
+          "telephone": "+52-999-318-3525",
           "areaServed": "MX",
           "availableLanguage": "Spanish"
         }
@@ -168,7 +169,7 @@
       "priceRange": "$$",
       "currenciesAccepted": "MXN",
       "email": "info@momotocafe.com",
-      "telephone": "+52-999-286-4269",
+      "telephone": "+52-999-318-3525",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Calle 59 A No. 703 Int. 32, Col. Bojórquez",
@@ -361,7 +362,7 @@
     <svg aria-hidden="true"><use href="#ico-wa"/></svg>Pedir por WhatsApp
   </a>
   <div class="mobile-nav__contact">
-    <span>Tel. <a href="tel:+529992864269">(999) 286 4269</a></span>
+    <span>Tel. <a href="tel:+529993183525">999 318 3525</a></span>
     <span><a href="mailto:info@momotocafe.com">info@momotocafe.com</a></span>
   </div>
 </div>
@@ -380,11 +381,17 @@
         <span class="eyebrow eyebrow--noline">Café orgánico de especialidad · Sureste de México</span>
         <h1>De la mata<br>a tu <em>taza.</em></h1>
         <p class="hero-lead">Cultivado a la sombra de la selva por pequeños productores de Chiapas, Veracruz y Oaxaca. Tostado en lotes pequeños en Mérida.</p>
+        <div class="hero-fauna" aria-label="Nuestras cinco líneas de café">
+          <span>Puma</span><span>Armadillo</span><span>Jaguar</span><span>Oso&nbsp;Negro</span><span>Flamingo</span>
+        </div>
         <div class="hero-foot">
-          <a class="btn btn--onDark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
-            <svg aria-hidden="true"><use href="#ico-wa"/></svg>Pedir por WhatsApp
+          <a class="btn btn--onDark deck-goto" href="#cafe">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1.2 12.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>Comprar café
           </a>
-          <span class="price-anchor"><b>Desde</b> <span class="n">$51</span> la bolsa de 100&nbsp;g</span>
+          <a class="btn btn--ghost on-dark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20%C2%BFcu%C3%A1l%20caf%C3%A9%20me%20recomiendan%3F" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#ico-wa"/></svg>¿Te ayudo a elegir?
+          </a>
+          <span class="price-anchor"><b>Desde</b> <span class="n">$51</span> los 100&nbsp;g · <span class="n">$450</span> el kilo</span>
         </div>
         <div class="hero-highlights" aria-label="Principales beneficios de Momoto Café">
           <div class="hero-highlight">
@@ -410,7 +417,7 @@
       <div class="section-head" data-anim>
         <span class="eyebrow">La colección · Cinco guardianes de la selva</span>
         <h2>Elige tu animal.</h2>
-        <p>Cada línea es un habitante de la selva y un carácter de taza. Elige tamaño y molienda; el precio se ajusta y armas tu pedido por WhatsApp.</p>
+        <p>Cada línea es un habitante de la selva y un carácter de taza. Elige tamaño y molienda; el precio se ajusta y pagas con <strong>tarjeta</strong> (carrito) o por <strong>WhatsApp</strong>.</p>
         <div class="head-cta">
           <a class="btn btn--ghost" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20%C2%BFcu%C3%A1l%20caf%C3%A9%20me%20recomiendan%3F" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#ico-wa"/></svg>¿Cuál me recomiendas?
@@ -418,14 +425,20 @@
         </div>
       </div>
 
-      <!-- Las 5 fichas se renderizan por JS desde MOMOTO.lineas -->
+      <!-- Contenido estático de las 5 líneas: indexable por buscadores/IA y fallback sin JS.
+           Con JS, main.js renderiza las fichas interactivas y este bloque se oculta (.js .catalogo-seo). -->
       <div id="catalogo">
-        <noscript>
-          <p style="color:var(--gris-cacao);max-width:56ch">Para armar tu pedido con el precio en vivo, activa JavaScript. También puedes escribirnos directo por WhatsApp y con gusto te ayudamos.</p>
-          <a class="btn btn--solid" style="margin-top:16px" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+        <div class="catalogo-seo">
+          <article class="seo-ficha"><h3>Puma</h3><p class="seo-latin">Puma concolor · Tueste oscuro</p><p>Tueste oscuro de cuerpo redondo: chocolate, avellana y caramelo. En grano o molido, de 100&nbsp;g a 1&nbsp;kg. Desde $51 (100&nbsp;g) hasta $450 el kilo (MXN).</p></article>
+          <article class="seo-ficha"><h3>Armadillo</h3><p class="seo-latin">Dasypus novemcinctus · Tueste medio claro</p><p>Tueste medio claro, vivo y aromático: frutal, floral y especiado. En grano o molido. Desde $51 (100&nbsp;g) hasta $450 el kilo (MXN).</p></article>
+          <article class="seo-ficha"><h3>Jaguar</h3><p class="seo-latin">Panthera onca · Tueste medio oscuro</p><p>Tueste medio oscuro con carácter: contraste entre notas florales y resinosas. En grano o molido. Desde $53 (100&nbsp;g) hasta $460 el kilo (MXN).</p></article>
+          <article class="seo-ficha"><h3>Oso Negro</h3><p class="seo-latin">Ursus americanus · Tueste oscuro</p><p>Tueste oscuro e intenso, con equilibrio entre amargos y dulces. En grano o molido. Desde $54 (100&nbsp;g) hasta $450 el kilo (MXN).</p></article>
+          <article class="seo-ficha"><h3>Flamingo</h3><p class="seo-latin">Phoenicopterus ruber · Descafeinado</p><p>Descafeinado por proceso al agua natural, sin químicos: todo el sabor, sin cafeína. En grano o molido. Desde $64 (100&nbsp;g) hasta $558 el kilo (MXN).</p></article>
+          <p class="seo-nota">Precios 2026 · Público general · MXN. Arma tu pedido y paga con tarjeta (carrito) o por WhatsApp.</p>
+          <a class="btn btn--solid" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#ico-wa"/></svg>Pedir por WhatsApp
           </a>
-        </noscript>
+        </div>
       </div>
     </div>
   </section>
@@ -489,7 +502,7 @@
     <div class="wrap">
       <div class="section-head" data-anim>
         <span class="eyebrow">El oficio</span>
-        <h2>De la mata a tu taza.</h2>
+        <h2>De la flor al tueste.</h2>
         <p>Seis pasos, sin prisa. Del cafetal de sombra al tueste artesanal en Mérida.</p>
       </div>
       <div class="proceso">
@@ -633,7 +646,7 @@
           <p>Cafeterías, oficinas y tiendas. Atención directa a clientes.</p>
           <p class="card-data">Contacto: <b>Lourdes Solís Letayf</b></p>
           <p class="card-data"><a class="link" href="mailto:lousolis@momotocafe.com">lousolis@momotocafe.com</a></p>
-          <p class="card-data">Tel. <a class="link" href="tel:+525551040857">55 5104 0857</a></p>
+          <p class="card-data">Tel. <a class="link" href="tel:+529993183525">999 318 3525</a></p>
           <a class="btn btn--onDark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20me%20interesa%20mayoreo" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#ico-wa"/></svg>Cotizar mayoreo
           </a>
@@ -684,7 +697,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span id="year">2026</span> Momoto Café · Tel. <a href="tel:+529992864269">(999) 286 4269</a> · <a href="mailto:info@momotocafe.com">info@momotocafe.com</a></p>
+    <p>© <span id="year">2026</span> Momoto Café · Tel. <a href="tel:+529993183525">999 318 3525</a> · <a href="mailto:info@momotocafe.com">info@momotocafe.com</a></p>
     <p>Chi de México, S.A. de C.V. · RFC CME080827RH1 · <a href="aviso-de-privacidad.html">Aviso de Privacidad</a></p>
   </div>
 </footer>

@@ -50,9 +50,9 @@
   to = "/404.html"
   status = 404
 
-# Redirección www a no-www (opcional, comenta si prefieres www)
-# [[redirects]]
-#   from = "https://momotocafe.com/*"
-#   to = "https://www.momotocafe.com/:splat"
-#   status = 301
-#   force = true
+# Canonicalización: momotocafe.com (sin www) → www.momotocafe.com
+[[redirects]]
+  from = "https://momotocafe.com/*"
+  to = "https://www.momotocafe.com/:splat"
+  status = 301
+  force = true
