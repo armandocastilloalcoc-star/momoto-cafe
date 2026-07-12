@@ -1,0 +1,36 @@
+name: Deploy a Netlify
+
+# Publica el sitio en Netlify (producción) en cada push a main.
+# Equivale al auto-deploy nativo: editas -> push -> se publica solo.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Evita despliegues solapados si se hacen varios push seguidos.
+concurrency:
+  group: netlify-produccion
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publicar en producción
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Deploy a producción (Netlify)
+        run: >-
+          npx --yes netlify-cli@latest deploy
+          --prod
+          --dir=.
+          --message "Deploy desde GitHub Actions — ${GITHUB_SHA::7}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
