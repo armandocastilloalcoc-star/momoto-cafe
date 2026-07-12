@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /README.md
 Host: www.momotocafe.com
 Sitemap: https://www.momotocafe.com/sitemap.xml

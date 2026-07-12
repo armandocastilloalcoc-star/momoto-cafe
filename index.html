@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Café orgánico de especialidad de sombra | Momoto Café | Mérida</title>
-<meta name="description" content="Descubre el café orgánico de especialidad cultivado a la sombra por pequeños productores del sureste de México. Tostado en Mérida, disponible en grano o molido, desde $52 la bolsa de 100 g.">
+<meta name="description" content="Café orgánico de especialidad, cultivado a la sombra en el sureste de México y tostado en Mérida. En grano o molido, desde $51 la bolsa de 100 g. Pídelo por WhatsApp.">
 <meta name="keywords" content="café orgánico de especialidad, café de especialidad Mérida, café de sombra, café orgánico Chiapas, café orgánico Veracruz, café orgánico Oaxaca, café descafeinado al agua, comprar café en grano, comprar café molido, Momoto Café">
 <meta name="author" content="Momoto Café — Chi de México S.A. de C.V.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -23,30 +23,30 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Momoto Café">
 <meta property="og:title" content="Café orgánico de especialidad en Mérida | Momoto Café">
-<meta property="og:description" content="Café 100% orgánico de especialidad del sureste de México, tostado bajo pedido en Mérida. En grano o molido, desde $52 la bolsa de 100 g. Pídelo por WhatsApp.">
-<meta property="og:image" content="https://www.momotocafe.com/assets/photos/cerezo.jpg">
-<meta property="og:image:secure_url" content="https://www.momotocafe.com/assets/photos/cerezo.jpg">
+<meta property="og:description" content="Café 100% orgánico de especialidad del sureste de México, tostado bajo pedido en Mérida. En grano o molido, desde $51 la bolsa de 100 g. Pídelo por WhatsApp.">
+<meta property="og:image" content="https://www.momotocafe.com/assets/og-image.jpg">
+<meta property="og:image:secure_url" content="https://www.momotocafe.com/assets/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1059">
-<meta property="og:image:height" content="1600">
-<meta property="og:image:alt" content="Cerezo de café madurando a la sombra de la selva del sureste de México">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cerezos de café Momoto, cultivados a la sombra en el sureste de México">
 <meta property="og:url" content="https://www.momotocafe.com/">
 <meta property="og:locale" content="es_MX">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Café orgánico de especialidad en Mérida | Momoto Café">
-<meta name="twitter:description" content="Café orgánico de especialidad del sureste de México, tostado bajo pedido en Mérida. En grano o molido, desde $52. Pídelo por WhatsApp.">
-<meta name="twitter:image" content="https://www.momotocafe.com/assets/photos/cerezo.jpg">
-<meta name="twitter:image:alt" content="Cerezo de café madurando a la sombra de la selva del sureste de México">
+<meta name="twitter:description" content="Café orgánico de especialidad del sureste de México, tostado bajo pedido en Mérida. En grano o molido, desde $51. Pídelo por WhatsApp.">
+<meta name="twitter:image" content="https://www.momotocafe.com/assets/og-image.jpg">
+<meta name="twitter:image:alt" content="Cerezos de café Momoto, cultivados a la sombra en el sureste de México">
 
 <!-- Fuentes: preconnect + una sola petición (LCP-friendly), solo los pesos que usamos -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Preload del LCP: descubrir la foto del hero cuanto antes -->
-<link rel="preload" as="image" href="assets/photos/cerezo.jpg" fetchpriority="high">
+<!-- Preload del LCP: descubrir la foto del hero (WebP) cuanto antes -->
+<link rel="preload" as="image" href="assets/photos/cerezo.webp" type="image/webp" fetchpriority="high">
 
 <link rel="stylesheet" href="styles.css">
 
@@ -104,15 +104,25 @@
       "areaServed": { "@type": "Country", "name": "México" },
       "award": "Global Quality Award Gold Elite — Global Quality Foundation",
       "memberOf": { "@type": "Organization", "name": "AMECAFE" },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "name": "Lourdes Solís Letayf",
-        "email": "lousolis@momotocafe.com",
-        "telephone": "+525551040857",
-        "areaServed": "MX",
-        "availableLanguage": "Spanish"
-      }
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+52-999-318-3525",
+          "email": "info@momotocafe.com",
+          "areaServed": "MX",
+          "availableLanguage": "Spanish"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "name": "Lourdes Solís Letayf",
+          "email": "lousolis@momotocafe.com",
+          "telephone": "+525551040857",
+          "areaServed": "MX",
+          "availableLanguage": "Spanish"
+        }
+      ]
     },
     {
       "@type": ["Store", "LocalBusiness"],
@@ -326,7 +336,10 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
-    <img class="hero-img" src="assets/photos/cerezo.jpg" alt="Cerezo de café madurando a la sombra de la selva del sureste de México" width="1059" height="1600" fetchpriority="high" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="assets/photos/cerezo.webp">
+      <img class="hero-img" src="assets/photos/cerezo.jpg" alt="Cerezo de café madurando a la sombra de la selva del sureste de México" width="1059" height="1600" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-scrim"></div>
     <div class="wrap">
       <div class="hero-inner">
@@ -337,7 +350,7 @@
           <a class="btn btn--onDark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#ico-wa"/></svg>Pedir por WhatsApp
           </a>
-          <span class="price-anchor"><b>Desde</b> <span class="n">$52</span> la bolsa de 100&nbsp;g</span>
+          <span class="price-anchor"><b>Desde</b> <span class="n">$51</span> la bolsa de 100&nbsp;g</span>
         </div>
         <div class="hero-highlights" aria-label="Principales beneficios de Momoto Café">
           <div class="hero-highlight">
@@ -386,6 +399,7 @@
   <!-- ============ FRESCURA + ENVÍOS (papel) ============ -->
   <section class="chapter chapter--tight" id="envios">
     <div class="wrap">
+      <h2 class="visually-hidden">Frescura y envíos</h2>
 
       <!-- Frescura -->
       <div class="franja" data-anim>
@@ -422,15 +436,15 @@
             <ul class="envio-list">
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Envío gratis</b> en pedidos de <b>5 kg o más</b>.</span></li>
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span>Entrega en aproximadamente <b>4 días hábiles</b>.</span></li>
-              <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span>Con número de rastreo para seguir tu paquete.</span></li>
+              <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Rastreo en tiempo real</b>: sigue tu paquete paso a paso, como una compra en línea. Te enviamos tu número de guía por WhatsApp en cuanto sale.</span></li>
             </ul>
-            <a class="rastreo" href="https://mydhl.express.dhl/mx/es/tracking.html" target="_blank" rel="noopener">
-              ¿Ya tienes tu número de guía? Rastrea tu envío con DHL
+            <a class="rastreo" href="https://www.dhl.com/mx-es/home/rastreo.html" target="_blank" rel="noopener" aria-label="Rastrear mi pedido en tiempo real con DHL">
+              Rastrea tu pedido en tiempo real con DHL
               <svg aria-hidden="true"><use href="#ico-arrow"/></svg>
             </a>
           </div>
         </div>
-        <p class="nota-precios">Precios 2026 · Público general · MXN · el «desde $52» es la bolsa de 100&nbsp;g · Pedidos y envíos por WhatsApp.</p>
+        <p class="nota-precios">Precios 2026 · Público general · MXN · el «desde $51» es la bolsa de 100&nbsp;g · Pedidos y envíos por WhatsApp.</p>
       </div>
 
     </div>
@@ -446,7 +460,10 @@
       </div>
       <div class="proceso">
         <div class="duo-frame" data-anim>
-          <img src="assets/photos/seleccion.jpg" alt="Manos seleccionando el grano de café verde, uno por uno" width="1200" height="1600" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/photos/seleccion.webp">
+            <img src="assets/photos/seleccion.jpg" alt="Manos seleccionando el grano de café verde, uno por uno" width="1200" height="1600" loading="lazy" decoding="async">
+          </picture>
         </div>
         <ol class="pasos" data-anim style="--anim-delay:.1s">
           <li><span class="p-num">01</span><span class="p-txt"><strong>Floración</strong><span>Nace el fruto entre flores blancas.</span></span></li>
@@ -465,7 +482,10 @@
     <div class="wrap">
       <div class="nosotros">
         <div class="duo-frame duo-frame--light" data-anim>
-          <img src="assets/photos/personal.jpg" alt="Equipo de Momoto Café seleccionando y empacando el café en Mérida" width="1600" height="1200" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/photos/personal.webp">
+            <img src="assets/photos/personal.jpg" alt="Equipo de Momoto Café seleccionando y empacando el café en Mérida" width="1600" height="1200" loading="lazy" decoding="async">
+          </picture>
           <!-- Marca de agua: momoto en line-art -->
           <svg class="duo-mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M18 20c7-4 15-3 19 3 2 3 2 7 0 10"/>

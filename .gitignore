@@ -8,3 +8,11 @@
 # Logs y temporales
 *.log
 node_modules/
+
+# Archivos internos / de trabajo — NO publicar en el sitio
+DNS-STATUS-REPORT.txt
+monitor-dns.sh
+preview.html
+_equipo/
+# Plantillas de tracking (su contenido se integra directo en index.html)
+TRACKING-SCRIPTS-PARA-HEAD.html
