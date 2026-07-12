@@ -26,13 +26,18 @@ html.deck .hero{background:var(--verde-sombra)}
 html.deck .panel-active{opacity:1;visibility:visible;transform:none;z-index:3}
 html.deck .panel-leaving{z-index:2}
 
-/* Header SIEMPRE sólido en deck (main.js lo alterna según el hero, que en deck
-   sigue geométricamente presente; aquí lo forzamos para que el menú se lea). */
+/* Header CREMA en deck: el logo a color (menta + azul marino) se integra sin
+   recuadro blanco, y el menú va en oscuro para leerse sobre cualquier panel. */
 html.deck .site-header{
-  background:rgba(6,43,38,.92);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-  padding-block:14px;border-bottom-color:var(--salvia-linea);
+  background:var(--papel);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  padding-block:12px;border-bottom:1px solid var(--arena);
 }
+html.deck .nav-links a{color:var(--verde-sombra)}
+html.deck .nav-links a:hover{color:var(--cereza)}
+html.deck .nav-links a.is-active{color:var(--cereza)}
+html.deck .nav-toggle span{background:var(--verde-sombra)}
+html.deck .cart-btn{color:var(--verde-sombra)}
 
 /* En deck el contenido siempre visible (no depende del observer de reveals) */
 html.deck [data-anim]{opacity:1!important;transform:none!important}
