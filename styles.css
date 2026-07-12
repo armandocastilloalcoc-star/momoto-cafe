@@ -751,3 +751,4 @@ body.cart-open{overflow:hidden}
 .gracias-card p{color:var(--papel-72);font-size:1rem;line-height:1.7;margin:0 0 26px}
 .gracias-card .btn+.btn{margin-left:10px}
 @media(max-width:480px){.gracias-card .btn{width:100%;justify-content:center;margin:6px 0}.gracias-card .btn+.btn{margin-left:0}}
+.cart-count[hidden]{display:none}
