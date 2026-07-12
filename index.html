@@ -19,6 +19,37 @@
 <!-- Google Search Console verification -->
 <meta name="google-site-verification" content="kAVAtAHx87B4g8WXrbRXIhz_-B1ddsedb0_7OIQjz7E" />
 
+<!-- ═══════════════════════ ANALÍTICA Y TRACKING ═══════════════════════ -->
+<!-- ▼ REEMPLAZA LOS 3 IDs:  G-XXXXXXXXXX (GA4)  ·  TU_PIXEL_ID (Meta)  ·  AW-XXXXXXXXXX (Google Ads) ▼ -->
+<!-- Google Consent Mode v2: consentimiento DENEGADO por defecto (LFPDPPP/GDPR); el banner lo actualiza -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update':500
+  });
+</script>
+<!-- Google tag (GA4 + Google Ads) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });   /* GA4 · reemplaza G-XXXXXXXXXX */
+  gtag('config', 'AW-XXXXXXXXXX');                              /* Google Ads · reemplaza AW-XXXXXXXXXX */
+</script>
+<!-- Meta (Facebook) Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('consent','revoke');            /* revocado hasta que el usuario acepte */
+  fbq('init','TU_PIXEL_ID');          /* Meta Pixel · reemplaza TU_PIXEL_ID */
+  fbq('track','PageView');
+</script>
+<!-- ═════════════════════════════════════════════════════════════════════ -->
+
 <!-- Open Graph / social (Facebook, WhatsApp, LinkedIn…) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Momoto Café">
@@ -260,6 +291,8 @@
 </script>
 </head>
 <body>
+<!-- Meta Pixel (noscript) · reemplaza TU_PIXEL_ID -->
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
@@ -632,6 +665,83 @@
 <a class="wa-fab" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
   <svg aria-hidden="true"><use href="#ico-wa"/></svg>Pedir por WhatsApp
 </a>
+
+<!-- ═══════════ Banner de consentimiento de cookies (Consent Mode v2) ═══════════ -->
+<div id="cookieConsent" class="cookie-consent" role="region" aria-label="Consentimiento de cookies" aria-labelledby="ccTitle" hidden>
+  <div class="cookie-consent__inner">
+    <div class="cookie-consent__text">
+      <p class="cookie-consent__title" id="ccTitle">Privacidad y cookies</p>
+      <p>Usamos analítica y publicidad (Google Analytics, Meta Pixel y Google Ads) para mejorar tu experiencia. Puedes aceptarlas o rechazarlas. <a href="aviso-de-privacidad.html">Aviso de Privacidad</a>.</p>
+    </div>
+    <div class="cookie-consent__actions">
+      <button type="button" id="cookieReject" class="cookie-consent__btn cookie-consent__btn--ghost">Rechazar</button>
+      <button type="button" id="cookieAccept" class="cookie-consent__btn cookie-consent__btn--solid">Aceptar</button>
+    </div>
+  </div>
+</div>
+<style>
+  .cookie-consent{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(6,43,38,.98);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(143,184,166,.28);
+    color:#F4EFE6;padding:16px clamp(16px,4vw,24px);font-family:var(--ui,'Inter',system-ui,sans-serif);
+    animation:ccUp .3s ease-out}
+  @keyframes ccUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .cookie-consent[hidden]{display:none}
+  .cookie-consent__inner{max-width:1100px;margin:0 auto;display:flex;gap:18px 28px;align-items:center;
+    justify-content:space-between;flex-wrap:wrap}
+  .cookie-consent__text{flex:1;min-width:min(100%,300px)}
+  .cookie-consent__title{margin:0 0 4px;font-size:15px;font-weight:600}
+  .cookie-consent__text p{margin:0;font-size:13px;line-height:1.5;color:rgba(244,239,230,.9)}
+  .cookie-consent__text a{color:#8FB8A6;text-decoration:underline}
+  .cookie-consent__text a:hover{color:#fff}
+  .cookie-consent__actions{display:flex;gap:10px;flex-shrink:0}
+  .cookie-consent__btn{min-height:44px;padding:10px 22px;border-radius:6px;font-family:inherit;font-size:14px;
+    font-weight:600;cursor:pointer;border:1.5px solid transparent;transition:background .2s,border-color .2s}
+  .cookie-consent__btn--ghost{background:transparent;color:#F4EFE6;border-color:rgba(244,239,230,.55)}
+  .cookie-consent__btn--ghost:hover{background:rgba(244,239,230,.12);border-color:#F4EFE6}
+  .cookie-consent__btn--solid{background:#8FB8A6;color:#062B26}
+  .cookie-consent__btn--solid:hover{background:#a6cbba}
+  .cookie-consent__btn:focus-visible{outline:3px solid #8FB8A6;outline-offset:2px}
+  @media(max-width:560px){.cookie-consent__actions{width:100%}.cookie-consent__btn{flex:1}}
+</style>
+<script>
+(function(){
+  "use strict";
+  var KEY="momoto_cookie_consent_v1", DAYS=365;
+  var banner=document.getElementById("cookieConsent"),
+      accept=document.getElementById("cookieAccept"),
+      reject=document.getElementById("cookieReject");
+  function G(){ if(typeof gtag==="function") gtag.apply(null,arguments); }
+  function read(){ try{ var d=JSON.parse(localStorage.getItem(KEY)||"null");
+    if(!d) return null; if(new Date(d.expiry)<new Date()){localStorage.removeItem(KEY);return null;} return d;
+  }catch(e){ return null; } }
+  function write(ok){ try{ var e=new Date(); e.setDate(e.getDate()+DAYS);
+    localStorage.setItem(KEY,JSON.stringify({accepted:ok,ts:new Date().toISOString(),expiry:e.toISOString(),v:1}));
+  }catch(e){} }
+  function grant(){ G('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
+    if(typeof fbq==="function") fbq('consent','grant'); }
+  function deny(){ G('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'}); }
+  if(accept) accept.addEventListener("click",function(){ write(true); grant(); banner.setAttribute("hidden",""); });
+  if(reject) reject.addEventListener("click",function(){ write(false); deny(); banner.setAttribute("hidden",""); });
+  var prev=read();
+  if(prev===null){ if(banner) banner.removeAttribute("hidden"); deny(); }
+  else if(prev.accepted){ grant(); }
+  else { deny(); }
+  window.ConsentReset=function(){ localStorage.removeItem(KEY); location.reload(); };
+})();
+</script>
+<!-- Tracking de conversión: clic a WhatsApp = lead (GA4 + Meta Pixel + Google Ads) -->
+<script>
+(function(){
+  document.addEventListener("click",function(e){
+    var a=e.target.closest && e.target.closest('a[href*="wa.me"]');
+    if(!a) return;
+    try{ if(typeof gtag==="function") gtag('event','generate_lead',{event_category:'whatsapp',event_label:a.href,transport_type:'beacon'}); }catch(_){}
+    try{ if(typeof fbq==="function") fbq('track','Lead'); }catch(_){}
+    /* Google Ads: reemplaza AW-XXXXXXXXXX/ETIQUETA por tu ID + etiqueta de conversión */
+    try{ if(typeof gtag==="function") gtag('event','conversion',{send_to:'AW-XXXXXXXXXX/ETIQUETA'}); }catch(_){}
+  });
+})();
+</script>
 
 <script src="main.js" defer></script>
 </body>
