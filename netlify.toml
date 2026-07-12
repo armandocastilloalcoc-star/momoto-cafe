@@ -1,10 +1,17 @@
-# Momoto Café — configuración de Netlify (sitio 100% estático, sin build)
+# Momoto Café — configuración de Netlify (estático + funciones serverless)
 
 [build]
   # No hay paso de compilación: se publica la raíz tal cual.
   publish = "."
   # Base URL después de configurar dominio personalizado
   base = "."
+
+# Funciones serverless (Stripe Checkout y rastreo DHL)
+# Requieren variables de entorno en Netlify:
+#   STRIPE_SECRET_KEY (obligatoria para pagos)
+#   DHL_API_KEY       (opcional, para rastreo con línea de tiempo)
+[functions]
+  directory = "netlify/functions"
 
 # Cabeceras de seguridad para todas las rutas
 [[headers]]

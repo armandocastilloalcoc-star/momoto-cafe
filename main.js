@@ -309,4 +309,7 @@
   /* ═══════════════════ H) AÑO DINÁMICO ═══════════════════ */
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
+
+  /* ═══════════════════ I) PUENTE PARA carrito.js ═══════════════════ */
+  window.__MOMOTO = { datos: MOMOTO, precio: calcularPrecio, formato: formatoPrecio };
 })();

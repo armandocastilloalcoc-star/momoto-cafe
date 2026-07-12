@@ -621,3 +621,133 @@ body.menu-open .wa-bar{display:none}
   [data-anim]{opacity:1!important;transform:none!important}
   .hero-img{transform:none}
 }
+
+/* ------------------------------------------------------------
+   14. CARRITO DE COMPRAS + PAGO STRIPE
+   ------------------------------------------------------------ */
+.site-header .nav{margin-left:auto}
+.cart-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;margin-left:clamp(12px,2vw,26px);
+  background:transparent;border:0;cursor:pointer;color:var(--papel);
+  transition:color .3s var(--ease),transform .2s var(--ease);
+}
+.cart-btn:hover{color:var(--salvia);transform:translateY(-1px)}
+.cart-btn svg{width:24px;height:24px}
+.cart-count{
+  position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--cereza,#C4552E);color:#fff;border-radius:999px;
+  font-family:var(--ui);font-size:.6875rem;font-weight:600;line-height:1;
+}
+body.cart-open{overflow:hidden}
+
+.cart-drawer{position:fixed;inset:0;z-index:60;pointer-events:none;visibility:hidden}
+.cart-drawer.is-open{pointer-events:auto;visibility:visible}
+.cart-drawer__overlay{
+  position:absolute;inset:0;background:rgba(6,43,38,.55);
+  opacity:0;transition:opacity .3s var(--ease);
+}
+.cart-drawer.is-open .cart-drawer__overlay{opacity:1}
+.cart-drawer__panel{
+  position:absolute;top:0;right:0;bottom:0;width:min(420px,92vw);
+  display:flex;flex-direction:column;background:var(--papel,#F4EFE6);
+  box-shadow:-18px 0 50px rgba(6,43,38,.25);
+  transform:translateX(100%);transition:transform .35s var(--ease);
+}
+.cart-drawer.is-open .cart-drawer__panel{transform:translateX(0)}
+.cart-drawer__head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 24px;border-bottom:1px solid rgba(35,30,27,.12);
+}
+.cart-drawer__head h3{font-family:var(--display);font-weight:500;font-size:1.5rem;color:var(--tinta);margin:0}
+.cart-drawer__close{
+  width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;border:0;cursor:pointer;color:var(--tinta);
+}
+.cart-drawer__close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75}
+.cart-drawer__items{flex:1;overflow-y:auto;padding:12px 24px}
+.cart-vacio{color:rgba(35,30,27,.6);font-size:.9375rem;text-align:center;padding:40px 0;line-height:1.7}
+.cart-item{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 0;border-bottom:1px solid rgba(35,30,27,.1);
+}
+.cart-item__info{display:flex;flex-direction:column;gap:2px}
+.cart-item__info strong{font-family:var(--display);font-weight:500;font-size:1.1rem;color:var(--tinta)}
+.cart-item__info span{font-size:.8125rem;color:rgba(35,30,27,.65)}
+.cart-item__precio{font-weight:600;color:var(--verde-selva)!important}
+.cart-item__qty{display:inline-flex;align-items:center;gap:10px}
+.cart-item__qty button{
+  width:30px;height:30px;border:1px solid rgba(35,30,27,.25);border-radius:50%;
+  background:transparent;cursor:pointer;font-size:1rem;line-height:1;color:var(--tinta);
+  transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.cart-item__qty button:hover{border-color:var(--verde-selva);background:rgba(14,74,64,.06)}
+.cart-item__qty span{min-width:20px;text-align:center;font-weight:600;color:var(--tinta)}
+.cart-drawer__resumen{padding:14px 24px 0;border-top:1px solid rgba(35,30,27,.12)}
+.cart-linea{display:flex;justify-content:space-between;font-size:.9375rem;color:var(--tinta);padding:4px 0}
+.cart-linea--total{font-weight:600;font-size:1.125rem;padding-top:10px}
+.cart-hint{font-size:.8125rem;color:var(--verde-selva);margin:4px 0}
+.cart-drawer__acciones{padding:16px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.cart-drawer__acciones .btn{justify-content:center}
+.cart-drawer__nota{font-size:.75rem;color:rgba(35,30,27,.55);text-align:center;margin:2px 0 0}
+.btn-carrito{margin-bottom:10px}
+#cartPagar:disabled{opacity:.5;cursor:not-allowed}
+
+/* ------------------------------------------------------------
+   15. RASTREO DE PEDIDO (DHL)
+   ------------------------------------------------------------ */
+.rastreo-band{
+  margin-top:26px;padding:clamp(24px,4vw,36px);
+  border:1px solid var(--salvia-borde);border-radius:4px;background:rgba(143,184,166,.06);
+}
+.rastreo-band__text h3{font-family:var(--display);font-weight:500;font-size:1.4rem;color:var(--papel);margin:0 0 6px}
+.rastreo-band__text p{color:var(--papel-72);font-size:.9375rem;margin:0 0 16px;max-width:60ch}
+.rastreo-band__text strong{color:var(--papel)}
+.rastreo-band__form{display:flex;gap:10px;flex-wrap:wrap}
+.rastreo-band__form input{
+  flex:1 1 220px;padding:12px 16px;font-family:var(--ui);font-size:.9375rem;
+  background:rgba(244,239,230,.06);border:1px solid var(--salvia-borde);border-radius:2px;
+  color:var(--papel);outline-offset:2px;
+}
+.rastreo-band__form input::placeholder{color:var(--papel-60)}
+.rastreo-band__resultado{margin-top:18px}
+.rastreo-msg{color:var(--papel-72);font-size:.9375rem}
+.rastreo-msg--err{color:#E8A08A}
+.rastreo-card{border:1px solid var(--salvia-linea);border-radius:4px;padding:18px 20px;background:rgba(6,43,38,.35)}
+.rastreo-head{display:flex;flex-direction:column;gap:4px;margin-bottom:14px}
+.rastreo-head strong{color:var(--papel);font-size:1.05rem}
+.rastreo-ruta,.rastreo-eta{color:var(--papel-72);font-size:.85rem}
+.rastreo-badge{
+  align-self:flex-start;font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--verde-sombra);background:var(--salvia);border-radius:999px;padding:4px 12px;margin-bottom:4px;
+}
+.rastreo-badge--ok{background:#9FD6A8}
+.rastreo-linea{list-style:none;margin:0;padding:0;position:relative}
+.rastreo-linea::before{
+  content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:var(--salvia-borde);
+}
+.rastreo-linea li{position:relative;padding:0 0 16px 28px;color:var(--papel-72);font-size:.875rem}
+.rastreo-linea li strong{color:var(--papel);font-weight:500}
+.rastreo-linea li small{color:var(--papel-60)}
+.rastreo-punto{
+  position:absolute;left:0;top:4px;width:15px;height:15px;border-radius:50%;
+  background:var(--verde-sombra);border:1.5px solid var(--salvia-borde);
+}
+.rastreo-linea li.is-actual .rastreo-punto{background:var(--salvia);border-color:var(--salvia)}
+.rastreo-dhl{display:inline-block;margin-top:6px;color:var(--salvia);font-size:.875rem}
+.rastreo-dhl:hover{color:var(--papel)}
+
+/* ------------------------------------------------------------
+   16. PÁGINA DE GRACIAS
+   ------------------------------------------------------------ */
+.gracias-hero{
+  min-height:100svh;display:flex;align-items:center;justify-content:center;
+  background:var(--verde-sombra);padding:24px;text-align:center;
+}
+.gracias-card{max-width:560px}
+.gracias-card .fauna-ok{width:64px;height:64px;color:var(--salvia);margin:0 auto 18px}
+.gracias-card h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--papel);margin:0 0 14px}
+.gracias-card p{color:var(--papel-72);font-size:1rem;line-height:1.7;margin:0 0 26px}
+.gracias-card .btn+.btn{margin-left:10px}
+@media(max-width:480px){.gracias-card .btn{width:100%;justify-content:center;margin:6px 0}.gracias-card .btn+.btn{margin-left:0}}
