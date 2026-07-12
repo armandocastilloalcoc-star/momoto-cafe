@@ -20,7 +20,7 @@
 <meta name="google-site-verification" content="kAVAtAHx87B4g8WXrbRXIhz_-B1ddsedb0_7OIQjz7E" />
 
 <!-- ═══════════════════════ ANALÍTICA Y TRACKING ═══════════════════════ -->
-<!-- ▼ REEMPLAZA LOS 3 IDs:  G-XXXXXXXXXX (GA4)  ·  TU_PIXEL_ID (Meta)  ·  AW-XXXXXXXXXX (Google Ads) ▼ -->
+<!-- IDs configurados: GA4 G-B34JLPW88G · Meta Pixel 3606104369544075 · Google Ads AW-2837740315 (FALTA la etiqueta de conversión de Ads, ver más abajo) -->
 <!-- Google Consent Mode v2: consentimiento DENEGADO por defecto (LFPDPPP/GDPR); el banner lo actualiza -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -31,11 +31,11 @@
   });
 </script>
 <!-- Google tag (GA4 + Google Ads) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34JLPW88G"></script>
 <script>
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });   /* GA4 · reemplaza G-XXXXXXXXXX */
-  gtag('config', 'AW-XXXXXXXXXX');                              /* Google Ads · reemplaza AW-XXXXXXXXXX */
+  gtag('config', 'G-B34JLPW88G', { 'anonymize_ip': true });   /* GA4 */
+  gtag('config', 'AW-2837740315');                             /* Google Ads (remarketing + conversion linker) */
 </script>
 <!-- Meta (Facebook) Pixel -->
 <script>
@@ -45,7 +45,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
   (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('consent','revoke');            /* revocado hasta que el usuario acepte */
-  fbq('init','TU_PIXEL_ID');          /* Meta Pixel · reemplaza TU_PIXEL_ID */
+  fbq('init','3606104369544075');     /* Meta Pixel */
   fbq('track','PageView');
 </script>
 <!-- ═════════════════════════════════════════════════════════════════════ -->
@@ -291,8 +291,8 @@
 </script>
 </head>
 <body>
-<!-- Meta Pixel (noscript) · reemplaza TU_PIXEL_ID -->
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- Meta Pixel (noscript) -->
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=3606104369544075&ev=PageView&noscript=1"/></noscript>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
@@ -737,8 +737,8 @@
     if(!a) return;
     try{ if(typeof gtag==="function") gtag('event','generate_lead',{event_category:'whatsapp',event_label:a.href,transport_type:'beacon'}); }catch(_){}
     try{ if(typeof fbq==="function") fbq('track','Lead'); }catch(_){}
-    /* Google Ads: reemplaza AW-XXXXXXXXXX/ETIQUETA por tu ID + etiqueta de conversión */
-    try{ if(typeof gtag==="function") gtag('event','conversion',{send_to:'AW-XXXXXXXXXX/ETIQUETA'}); }catch(_){}
+    /* Google Ads: FALTA la etiqueta de conversión. Al crear la acción de conversión en Ads, reemplaza ETIQUETA por el código que aparece tras la barra (AW-2837740315/xxxxxxxx). */
+    try{ if(typeof gtag==="function") gtag('event','conversion',{send_to:'AW-2837740315/ETIQUETA'}); }catch(_){}
   });
 })();
 </script>
