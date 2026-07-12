@@ -543,6 +543,22 @@ body.menu-open .wa-bar{display:none}
 .contacto-card .btn{margin-top:auto}
 .contacto-card .btn--onDark{margin-top:20px}
 
+/* Pago en línea con tarjeta (Stripe) */
+.pago-band{
+  margin-top:clamp(16px,2.5vw,24px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;
+  background:var(--verde-selva);border:1px solid var(--salvia-borde);border-radius:var(--r-xs);
+  padding:clamp(24px,3vw,32px);
+}
+.pago-band__text{flex:1 1 320px;min-width:min(100%,300px)}
+.pago-band__text h3{font-family:var(--display);font-weight:500;font-size:1.4rem;color:var(--papel);margin:0 0 6px}
+.pago-band__text p{color:var(--papel-72);font-size:.9375rem;margin:0;max-width:54ch}
+.pago-band__text strong{color:var(--papel)}
+.pago-band__cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.pago-band__secure{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--papel-60)}
+.pago-band__secure svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:560px){.pago-band__cta{width:100%}.pago-band__cta .btn{width:100%;justify-content:center}}
+
 /* Footer */
 .site-footer{background:linear-gradient(180deg,var(--verde-sombra) 0%,#031614 100%);color:var(--papel-60)}
 .site-footer .wrap{
