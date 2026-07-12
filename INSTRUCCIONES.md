@@ -37,3 +37,8 @@ Modificados: `index.html`, `main.js`, `styles.css`, `netlify.toml`
 ## Prueba antes de cobrar en serio
 
 Usa primero tu clave `sk_test_...` en `STRIPE_SECRET_KEY` y paga con la tarjeta de prueba `4242 4242 4242 4242` (cualquier fecha futura y CVC). Cuando todo se vea bien, cámbiala por la `sk_live_...`.
+
+## Estado
+
+- STRIPE_SECRET_KEY configurada en Netlify (pagos activos).
+- DHL_API_KEY configurada en Netlify (rastreo con linea de tiempo; requiere aprobacion de DHL a la suscripcion "Shipment Tracking - Unified").
