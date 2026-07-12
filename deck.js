@@ -55,8 +55,7 @@
     current = i;
     var active = panels[i];
     var onDark = active.classList.contains("dark") || active.id === "inicio";
-    body.classList.toggle("deck-on-dark", onDark);
-    if (brandImg) brandImg.src = onDark ? "assets/logo-light.png" : "assets/logo-color.png";
+    body.classList.toggle("deck-on-dark", onDark);   // solo para el color de los dots
     // estado activo del menú (desktop + móvil)
     var links = document.querySelectorAll(".nav-links a, .mobile-nav__links a");
     Array.prototype.forEach.call(links, function (a) {

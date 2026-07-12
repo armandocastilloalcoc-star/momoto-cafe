@@ -39,17 +39,8 @@ html.deck .nav-links a:hover,
 html.deck .nav-links a.is-active{color:var(--cereza)}
 html.deck .nav-toggle span{background:var(--verde-sombra)}
 html.deck .cart-btn{color:var(--verde-sombra)}
-
-/* Paneles OSCUROS (Inicio, Proceso, Contacto): header verde translúcido + tinta clara */
-body.deck-on-dark .site-header{
-  background:rgba(6,43,38,.45);
-  border-bottom-color:rgba(244,239,230,.10);
-}
-body.deck-on-dark .nav-links a{color:var(--papel-72)}
-body.deck-on-dark .nav-links a:hover,
-body.deck-on-dark .nav-links a.is-active{color:var(--salvia)}
-body.deck-on-dark .nav-toggle span{background:var(--papel)}
-body.deck-on-dark .cart-btn{color:var(--papel)}
+/* Header crema translúcido en TODOS los paneles: deja ver el fondo difuminado
+   detrás y el logo a color (azul marino + menta) se lee siempre. */
 
 /* En deck el contenido siempre visible (no depende del observer de reveals) */
 html.deck [data-anim]{opacity:1!important;transform:none!important}
