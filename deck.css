@@ -26,18 +26,30 @@ html.deck .hero{background:var(--verde-sombra)}
 html.deck .panel-active{opacity:1;visibility:visible;transform:none;z-index:3}
 html.deck .panel-leaving{z-index:2}
 
-/* Header CREMA en deck: el logo a color (menta + azul marino) se integra sin
-   recuadro blanco, y el menú va en oscuro para leerse sobre cualquier panel. */
+/* Header TRANSLÚCIDO en deck: deja ver el fondo de la página (frost sutil), sin
+   recuadro. Logo y menú se adaptan al panel (claro sobre oscuro, oscuro sobre claro);
+   deck.js cambia la imagen del logo. */
 html.deck .site-header{
-  background:var(--papel);
-  -webkit-backdrop-filter:none;backdrop-filter:none;
-  padding-block:12px;border-bottom:1px solid var(--arena);
+  background:rgba(244,239,230,.72);           /* paneles claros: crema translúcido */
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  padding-block:12px;border-bottom:1px solid rgba(6,43,38,.08);
 }
 html.deck .nav-links a{color:var(--verde-sombra)}
-html.deck .nav-links a:hover{color:var(--cereza)}
+html.deck .nav-links a:hover,
 html.deck .nav-links a.is-active{color:var(--cereza)}
 html.deck .nav-toggle span{background:var(--verde-sombra)}
 html.deck .cart-btn{color:var(--verde-sombra)}
+
+/* Paneles OSCUROS (Inicio, Proceso, Contacto): header verde translúcido + tinta clara */
+body.deck-on-dark .site-header{
+  background:rgba(6,43,38,.45);
+  border-bottom-color:rgba(244,239,230,.10);
+}
+body.deck-on-dark .nav-links a{color:var(--papel-72)}
+body.deck-on-dark .nav-links a:hover,
+body.deck-on-dark .nav-links a.is-active{color:var(--salvia)}
+body.deck-on-dark .nav-toggle span{background:var(--papel)}
+body.deck-on-dark .cart-btn{color:var(--papel)}
 
 /* En deck el contenido siempre visible (no depende del observer de reveals) */
 html.deck [data-anim]{opacity:1!important;transform:none!important}

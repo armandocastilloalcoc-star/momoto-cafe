@@ -13,6 +13,7 @@
 
   var html = document.documentElement, body = document.body;
   var current = 0, lock = false, dotsWrap;
+  var brandImg = document.querySelector(".brand img");   // logo del header (se adapta al panel)
 
   html.classList.add("deck");
   body.classList.add("deck");
@@ -53,7 +54,9 @@
     });
     current = i;
     var active = panels[i];
-    body.classList.toggle("deck-on-dark", active.classList.contains("dark") || active.id === "inicio");
+    var onDark = active.classList.contains("dark") || active.id === "inicio";
+    body.classList.toggle("deck-on-dark", onDark);
+    if (brandImg) brandImg.src = onDark ? "assets/logo-light.png" : "assets/logo-color.png";
     // estado activo del menú (desktop + móvil)
     var links = document.querySelectorAll(".nav-links a, .mobile-nav__links a");
     Array.prototype.forEach.call(links, function (a) {
