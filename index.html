@@ -534,7 +534,7 @@
       <div class="nosotros">
         <div class="duo-frame duo-frame--light" data-anim>
           <!-- El ave momoto que da nombre a la marca: el video encaja con el texto de al lado -->
-          <video class="duo-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-ave-poster.jpg" aria-label="El momoto, ave de la selva del sureste de México que da nombre a Momoto Café">
+          <video class="duo-video" id="momotoVideo" autoplay muted playsinline preload="auto" poster="assets/video/hero-ave-poster.jpg" aria-label="El momoto, ave de la selva del sureste de México que da nombre a Momoto Café">
             <source src="assets/video/hero-ave.webm" type="video/webm">
             <source src="assets/video/hero-ave.mp4" type="video/mp4">
           </video>
@@ -851,6 +851,20 @@
 })();
 </script>
 
+<!-- El video del ave (Nosotros) se reproduce solo al entrar al apartado y se detiene al terminar (sin bucle) -->
+<script>
+(function(){
+  var v = document.getElementById("momotoVideo");
+  var panel = document.getElementById("nosotros");
+  if(!v) return;
+  function play(){ try{ v.currentTime = 0; var p = v.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
+  if(panel && "MutationObserver" in window){
+    new MutationObserver(function(){ if(panel.classList.contains("panel-active")) play(); })
+      .observe(panel, {attributes:true, attributeFilter:["class"]});
+    if(panel.classList.contains("panel-active")) play();
+  }
+})();
+</script>
 <script src="main.js" defer></script>
 <script src="carrito.js" defer></script>
 <script src="deck.js" defer></script>
