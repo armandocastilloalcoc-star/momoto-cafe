@@ -6,8 +6,8 @@
    ============================================================ */
 (function () {
   "use strict";
-  var ORDER = ["inicio", "cafe", "proceso", "nosotros", "resenas", "contacto"];
-  var LABELS = { inicio: "Inicio", cafe: "Café", proceso: "Proceso", nosotros: "Nosotros", resenas: "Reseñas", contacto: "Contacto" };
+  var ORDER = ["inicio", "cafe", "nosotros", "resenas", "contacto"];
+  var LABELS = { inicio: "Inicio", cafe: "Café", nosotros: "Nosotros", resenas: "Reseñas", contacto: "Contacto" };
   var panels = ORDER.map(function (id) { return document.getElementById(id); }).filter(Boolean);
   if (panels.length < 2) return;
 

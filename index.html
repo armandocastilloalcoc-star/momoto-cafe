@@ -123,7 +123,7 @@
       },
       "image": "https://www.momotocafe.com/assets/photos/cerezo.jpg",
       "description": "Café 100% orgánico de especialidad cultivado a la sombra por pequeños productores del sureste de México (Chiapas, Veracruz y Oaxaca) y tostado en Mérida, Yucatán.",
-      "slogan": "De la mata a tu taza.",
+      "slogan": "De la tostadora a tu casa.",
       "email": "info@momotocafe.com",
       "telephone": "+52-999-318-3525",
       "address": {
@@ -334,7 +334,6 @@
     <ul class="nav-links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#cafe">Café</a></li>
-      <li><a href="#proceso">Proceso</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -354,7 +353,6 @@
     <div class="mobile-nav__links">
       <a href="#inicio">Inicio</a>
       <a href="#cafe">Café</a>
-      <a href="#proceso">Proceso</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#resenas">Reseñas</a>
       <a href="#contacto">Contacto</a>
@@ -373,6 +371,7 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
+    <div class="hero-stage">
     <img class="hero-img" src="assets/video/hero-poster.jpg" alt="Taza de café Momoto humeante sobre madera, entre cafetos a la sombra de la selva del sureste de México" width="1280" height="720" fetchpriority="high" decoding="async">
     <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
       <source src="assets/video/hero.webm" type="video/webm">
@@ -387,7 +386,7 @@
     <div class="wrap">
       <div class="hero-inner">
         <span class="eyebrow eyebrow--noline">Café orgánico de especialidad · Sureste de México</span>
-        <h1>De la mata<br>a tu <em>taza.</em></h1>
+        <h1>De la tostadora<br>a tu <em>casa.</em></h1>
         <p class="hero-lead">Cultivado a la sombra de la selva por pequeños productores de Chiapas, Veracruz y Oaxaca. Tostado en lotes pequeños en Mérida.</p>
         <div class="hero-fauna" aria-label="Nuestras cinco líneas de café">
           <span>Puma</span><span>Armadillo</span><span>Jaguar</span><span>Oso&nbsp;Negro</span><span>Flamingo</span>
@@ -413,6 +412,34 @@
             <strong>Envío a todo México</strong>
             <span>Pedido y seguimiento por WhatsApp.</span>
           </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /.hero-stage -->
+
+    <!-- Proceso, fusionado dentro de Inicio (scroll interno) -->
+    <div class="proceso-inicio dark">
+      <div class="wrap">
+        <div class="section-head" data-anim>
+          <span class="eyebrow">El oficio</span>
+          <h2>De la flor al tueste.</h2>
+          <p>Seis pasos, sin prisa. Del cafetal de sombra al tueste artesanal en Mérida.</p>
+        </div>
+        <div class="proceso">
+          <div class="duo-frame" data-anim>
+            <picture>
+              <source type="image/webp" srcset="assets/photos/seleccion.webp">
+              <img src="assets/photos/seleccion.jpg" alt="Manos seleccionando el grano de café verde, uno por uno" width="1200" height="1600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <ol class="pasos" data-anim style="--anim-delay:.1s">
+            <li><span class="p-num">01</span><span class="p-txt"><strong>Floración</strong><span>Nace el fruto entre flores blancas.</span></span></li>
+            <li><span class="p-num">02</span><span class="p-txt"><strong>Recolección</strong><span>Cosecha selectiva del cerezo maduro.</span></span></li>
+            <li><span class="p-num">03</span><span class="p-txt"><strong>Selección</strong><span>Se elige el mejor grano, uno por uno.</span></span></li>
+            <li><span class="p-num">04</span><span class="p-txt"><strong>Despulpado</strong><span>Se separa la pulpa y se lava el grano.</span></span></li>
+            <li><span class="p-num">05</span><span class="p-txt"><strong>Secado</strong><span>El grano descansa en sacos de yute.</span></span></li>
+            <li><span class="p-num">06</span><span class="p-txt"><strong>Tueste</strong><span>Tostado en lotes pequeños, listo para ti.</span></span></li>
+          </ol>
         </div>
       </div>
     </div>
@@ -501,32 +528,6 @@
     </div>
   </section>
 
-  <!-- ============ PROCESO 01–06 (oscuro + duotono) ============ -->
-  <section class="chapter dark" id="proceso">
-    <div class="wrap">
-      <div class="section-head" data-anim>
-        <span class="eyebrow">El oficio</span>
-        <h2>De la flor al tueste.</h2>
-        <p>Seis pasos, sin prisa. Del cafetal de sombra al tueste artesanal en Mérida.</p>
-      </div>
-      <div class="proceso">
-        <div class="duo-frame" data-anim>
-          <picture>
-            <source type="image/webp" srcset="assets/photos/seleccion.webp">
-            <img src="assets/photos/seleccion.jpg" alt="Manos seleccionando el grano de café verde, uno por uno" width="1200" height="1600" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <ol class="pasos" data-anim style="--anim-delay:.1s">
-          <li><span class="p-num">01</span><span class="p-txt"><strong>Floración</strong><span>Nace el fruto entre flores blancas.</span></span></li>
-          <li><span class="p-num">02</span><span class="p-txt"><strong>Recolección</strong><span>Cosecha selectiva del cerezo maduro.</span></span></li>
-          <li><span class="p-num">03</span><span class="p-txt"><strong>Selección</strong><span>Se elige el mejor grano, uno por uno.</span></span></li>
-          <li><span class="p-num">04</span><span class="p-txt"><strong>Despulpado</strong><span>Se separa la pulpa y se lava el grano.</span></span></li>
-          <li><span class="p-num">05</span><span class="p-txt"><strong>Secado</strong><span>El grano descansa en sacos de yute.</span></span></li>
-          <li><span class="p-num">06</span><span class="p-txt"><strong>Tueste</strong><span>Tostado en lotes pequeños, listo para ti.</span></span></li>
-        </ol>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ NOSOTROS + CREDENCIALES (papel) ============ -->
   <section class="chapter" id="nosotros">
