@@ -77,9 +77,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Preload del LCP: descubrir la foto del hero (WebP) cuanto antes -->
-<link rel="preload" as="image" href="assets/photos/cerezo.webp" type="image/webp" fetchpriority="high">
-
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="deck.css">
 
@@ -184,7 +181,7 @@
       "@id": "https://www.momotocafe.com/#website",
       "url": "https://www.momotocafe.com/",
       "name": "Momoto Café",
-      "description": "Café orgánico de especialidad — de la mata a tu taza.",
+      "description": "Café orgánico de especialidad — de la tostadora a tu casa.",
       "inLanguage": "es-MX",
       "publisher": { "@id": "https://www.momotocafe.com/#organization" }
     },
@@ -482,7 +479,7 @@
       <div class="franja" data-anim>
         <span class="eyebrow">Fresco por diseño</span>
         <h3>Tostado bajo pedido. Fresco por diseño.</h3>
-        <p>Del tostador a tu taza, sin bodega ni anaquel: tostamos bajo pedido y sellamos con válvula.</p>
+        <p>Del tostador a tu mesa, sin bodega ni anaquel: tostamos bajo pedido y sellamos con válvula.</p>
         <div class="pilares">
           <div class="pilar">
             <svg class="pilar__ico" aria-hidden="true"><use href="#ico-flame"/></svg>
@@ -535,7 +532,7 @@
       <div class="nosotros">
         <div class="duo-frame duo-frame--light" data-anim>
           <!-- El ave momoto que da nombre a la marca: el video encaja con el texto de al lado -->
-          <video class="duo-video" id="momotoVideo" autoplay muted playsinline preload="auto" poster="assets/video/hero-ave-poster.jpg" aria-label="El momoto, ave de la selva del sureste de México que da nombre a Momoto Café">
+          <video class="duo-video" id="momotoVideo" muted playsinline preload="none" poster="assets/video/hero-ave-poster.jpg" aria-label="El momoto, ave de la selva del sureste de México que da nombre a Momoto Café">
             <source src="assets/video/hero-ave.webm" type="video/webm">
             <source src="assets/video/hero-ave.mp4" type="video/mp4">
           </video>
@@ -857,12 +854,15 @@
 (function(){
   var v = document.getElementById("momotoVideo");
   var panel = document.getElementById("nosotros");
-  if(!v) return;
-  function play(){ try{ v.currentTime = 0; var p = v.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
-  if(panel && "MutationObserver" in window){
-    new MutationObserver(function(){ if(panel.classList.contains("panel-active")) play(); })
-      .observe(panel, {attributes:true, attributeFilter:["class"]});
-    if(panel.classList.contains("panel-active")) play();
+  if(!v || !panel) return;
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function upd(){
+    if(panel.classList.contains("panel-active")){ try{ v.currentTime = 0; var p = v.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
+    else { try{ v.pause(); }catch(e){} }
+  }
+  if("MutationObserver" in window){
+    new MutationObserver(upd).observe(panel, {attributes:true, attributeFilter:["class"]});
+    upd();
   }
 })();
 </script>

@@ -97,6 +97,8 @@
     document.addEventListener("keydown", function (e) {
       var tag = (e.target && e.target.tagName) || "";
       if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+      // No robar flechas/Home/End a controles interactivos (p. ej. el radiogroup de tamaño/molienda)
+      if (e.target && e.target.closest && e.target.closest('.seg,[role="radiogroup"],button,a,select,[contenteditable]')) return;
       if (body.classList.contains("cart-open") || body.classList.contains("menu-open")) return;
       switch (e.key) {
         case "ArrowRight": case "PageDown": e.preventDefault(); go(current + 1); break;

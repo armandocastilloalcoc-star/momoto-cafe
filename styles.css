@@ -262,6 +262,8 @@ body.menu-open .wa-bar{display:none}
   position:relative;min-height:100svh;display:flex;align-items:safe flex-end;
   background:var(--verde-sombra);overflow:hidden;
 }
+/* En el deck, el panel ya está desplazado por el header: descuenta esos 72px para no empujar el hero bajo el pliegue */
+html.deck .hero-stage{min-height:calc(100svh - var(--header-h))}
 /* Proceso fusionado dentro de Inicio */
 .proceso-inicio{padding-block:clamp(64px,10vw,120px)}
 .hero-img{
@@ -312,17 +314,19 @@ body.menu-open .wa-bar{display:none}
 /* Pantallas BAJAS (laptops y móviles): que el hero QUEPA y el título de arriba
    ("De la mata") siempre sea visible y accesible. Arregla la queja
    "no puedo ver la parte de hasta arriba / no me deja subir". */
+/* Especificidad con html.deck para GANARLE al @media(min-width:720px) del hero
+   (si no, en pantallas anchas y bajas el H1 no se encoge y los CTAs caen bajo el pliegue). */
 @media (max-height:820px){
   html.deck .hero-inner{padding-block:clamp(18px,4vh,40px)}
-  .hero h1{font-size:clamp(2.2rem,6.6vh,4.2rem)}
-  .hero-lead{font-size:1rem;margin-top:14px}
-  .hero-foot{margin-top:22px;gap:14px}
-  .hero-highlights{margin-top:18px;gap:10px}
+  html.deck .hero h1{font-size:clamp(2.2rem,6.6vh,4.2rem)}
+  html.deck .hero-lead{font-size:1rem;margin-top:14px}
+  html.deck .hero-foot{margin-top:22px;gap:14px}
+  html.deck .hero-highlights{margin-top:18px;gap:10px}
 }
 @media (max-height:660px){
-  .hero h1{font-size:clamp(2rem,7vh,3rem)}
+  html.deck .hero h1{font-size:clamp(2rem,7vh,3rem)}
   html.deck .hero-inner{padding-block:14px}
-  .hero-highlights{display:none}   /* en muy bajito, prioriza título + CTAs */
+  html.deck .hero-highlights{display:none}   /* en muy bajito, prioriza título + CTAs */
 }
 
 /* Ave momoto que entra volando y se transforma en el emblema del logo (derecha, sobre las ramas).

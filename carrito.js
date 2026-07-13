@@ -86,13 +86,32 @@
   const $whats = drawer.querySelector("#cartWhats");
   const $count = btnHeader.querySelector("#cartCount");
 
-  function abrir()  { drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); document.body.classList.add("cart-open"); }
-  function cerrar() { drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true"); document.body.classList.remove("cart-open"); }
+  let _lastFocus = null;
+  const _panel = drawer.querySelector(".cart-drawer__panel");
+  function abrir()  {
+    _lastFocus = document.activeElement;
+    drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); document.body.classList.add("cart-open");
+    const close = drawer.querySelector("#cartClose"); if (close) close.focus();
+  }
+  function cerrar() {
+    drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true"); document.body.classList.remove("cart-open");
+    if (_lastFocus && _lastFocus.focus) _lastFocus.focus();
+  }
 
   btnHeader.addEventListener("click", abrir);
   drawer.querySelector("#cartClose").addEventListener("click", cerrar);
   drawer.querySelector("#cartOverlay").addEventListener("click", cerrar);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && drawer.classList.contains("is-open")) cerrar(); });
+  // Focus-trap: mantener el Tab dentro del carrito mientras está abierto (accesibilidad del modal)
+  drawer.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab" || !drawer.classList.contains("is-open")) return;
+    let f = _panel.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    f = Array.prototype.filter.call(f, (el) => el.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   function render() {
     // Contador del header
