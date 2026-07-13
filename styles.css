@@ -571,7 +571,7 @@ body.menu-open .wa-bar{display:none}
    14. CONTACTO + FOOTER (oscuro)
    ------------------------------------------------------------ */
 .contacto-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,24px)}
-@media(min-width:821px){.contacto-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:821px){.contacto-grid{grid-template-columns:repeat(2,1fr)}}
 .contacto-card{
   display:flex;flex-direction:column;background:var(--verde-selva);
   border:1px solid var(--salvia-linea);border-radius:var(--r-xs);
