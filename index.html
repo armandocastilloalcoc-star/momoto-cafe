@@ -376,11 +376,15 @@
       <source src="assets/video/hero.webm" type="video/webm">
       <source src="assets/video/hero.mp4" type="video/mp4">
     </video>
+    <!-- El ave momoto fotorreal abre el hero y hace cross-fade a la escena de café + logo -->
+    <video class="hero-ave-video" id="heroAve" autoplay muted playsinline preload="auto" poster="assets/video/hero-ave-poster.jpg" aria-hidden="true">
+      <source src="assets/video/hero-ave.webm" type="video/webm">
+      <source src="assets/video/hero-ave.mp4" type="video/mp4">
+    </video>
     <div class="hero-scrim"></div>
-    <!-- El ave momoto entra volando y se transforma en el emblema del logo (una vez, al cargar) -->
-    <div class="hero-brandfly" aria-hidden="true">
-      <img class="hero-brandfly__ave" src="assets/hero-ave.png" alt="" width="560" height="453" decoding="async">
-      <img class="hero-brandfly__logo" src="assets/hero-emblema.png" alt="" width="300" height="299" decoding="async">
+    <!-- El emblema del logo (crema/menta) aparece al cerrar el relevo del ave -->
+    <div class="hero-brand" aria-hidden="true">
+      <img class="hero-brand__logo" src="assets/hero-emblema-crema.png" alt="" width="380" height="380" decoding="async">
     </div>
     <div class="wrap">
       <div class="hero-inner">
@@ -858,6 +862,25 @@
 })();
 </script>
 
+<!-- Relevo del hero: el ave fotorreal cierra y aparece la escena de café + el logo -->
+<script>
+(function(){
+  var hero = document.getElementById("inicio");
+  var ave = document.getElementById("heroAve");
+  if(!hero || !ave) return;
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    hero.classList.add("hero-done"); return;   // sin animación: escena café + logo directo
+  }
+  var done = false;
+  function finish(){ if(done) return; done = true; hero.classList.add("hero-done"); }
+  ave.addEventListener("timeupdate", function(){
+    if(ave.duration && ave.currentTime >= ave.duration - 2.1) finish();
+  });
+  ave.addEventListener("ended", finish);
+  ave.addEventListener("error", finish);
+  setTimeout(finish, 8200);   // respaldo por si el video no reporta tiempo
+})();
+</script>
 <script src="main.js" defer></script>
 <script src="carrito.js" defer></script>
 <script src="deck.js" defer></script>

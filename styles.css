@@ -274,37 +274,26 @@ body.menu-open .wa-bar{display:none}
 /* Respeta a quien desactiva animaciones: se oculta el video y queda la foto */
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 
-/* Ave momoto que entra volando y se transforma en el emblema del logo (derecha, sobre las ramas) */
-.hero-brandfly{position:absolute;right:5%;top:33%;width:clamp(160px,23vw,320px);aspect-ratio:1;z-index:2;pointer-events:none}
-.hero-brandfly img{position:absolute;top:50%;left:50%;will-change:transform,opacity}
-.hero-brandfly__ave{
-  width:100%;opacity:0;
-  filter:drop-shadow(0 10px 22px rgba(4,20,18,.45));
-  transform:translate(-50%,-50%);
-  animation:brandAve 2.7s cubic-bezier(.22,.61,.36,1) .5s forwards;
+/* Relevo del hero: el ave fotorreal abre a pantalla completa y hace cross-fade
+   a la escena de café; al cerrar, aparece el emblema del logo (crema/menta). */
+.hero-ave-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+  filter:saturate(.9) brightness(.78) contrast(1.02);z-index:0;
+  opacity:1;transition:opacity 1.7s ease;
 }
-.hero-brandfly__logo{
-  width:56%;opacity:0;
-  filter:drop-shadow(0 8px 18px rgba(4,20,18,.5));
-  transform:translate(-50%,-50%) scale(.62);
-  animation:brandLogo 1s cubic-bezier(.2,1,.3,1) 2.5s forwards;
+.hero.hero-done .hero-ave-video{opacity:0;pointer-events:none}
+.hero-brand{
+  position:absolute;right:5.5%;top:50%;transform:translateY(-50%);
+  width:clamp(140px,16vw,210px);z-index:2;pointer-events:none;
+  opacity:0;transition:opacity 1.5s ease .35s;
 }
-@keyframes brandAve{
-  0%{opacity:0;transform:translate(calc(-50% + 58vw),calc(-50% - 34vh)) rotate(-7deg) scale(.9)}
-  14%{opacity:1}
-  60%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}
-  82%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}
-  100%{opacity:0;transform:translate(calc(-50% - 1vw),calc(-50% + 2vh)) scale(.94)}
-}
-@keyframes brandLogo{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.62)}
-  100%{opacity:1;transform:translate(-50%,-50%) scale(1)}
-}
-@media(max-width:700px){.hero-brandfly{display:none}}   /* en móvil se mantiene limpio */
-@media(prefers-reduced-motion:reduce){
-  .hero-brandfly__ave{display:none}
-  .hero-brandfly__logo{opacity:1;transform:translate(-50%,-50%);animation:none}
-}
+.hero.hero-done .hero-brand{opacity:1}
+.hero-brand::before{content:"";position:absolute;inset:-34% -34%;z-index:-1;
+  background:radial-gradient(closest-side,rgba(6,43,38,.5),rgba(6,43,38,0) 76%)}
+.hero-brand__logo{width:100%;height:auto;display:block;
+  filter:drop-shadow(0 4px 16px rgba(4,20,18,.55))}
+@media(max-width:700px){.hero-brand{display:none}}   /* móvil limpio; el logo del header ya está */
+@media(prefers-reduced-motion:reduce){.hero-ave-video{display:none}}
 .hero-scrim{
   position:absolute;inset:0;z-index:1;background:
     linear-gradient(to top,#041E1A 4%,rgba(6,43,38,.5) 42%,rgba(6,43,38,.15) 72%,rgba(6,43,38,.4) 100%),
