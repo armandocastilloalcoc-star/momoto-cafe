@@ -257,11 +257,18 @@ body.menu-open .wa-bar{display:none}
   background:var(--verde-sombra);overflow:hidden;
 }
 .hero-img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;
   filter:saturate(.82) brightness(.72) contrast(1.02);
   transform:scale(1.05);animation:kb var(--dur-kb) var(--ease) infinite alternate;z-index:0;
 }
 @keyframes kb{to{transform:scale(1.14) translateY(-1.5%)}}
+/* Video de fondo del hero (encima de la foto de respaldo, debajo del degradado) */
+.hero-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;
+  filter:saturate(.82) brightness(.72) contrast(1.02);z-index:0;
+}
+/* Respeta a quien desactiva animaciones: se oculta el video y queda la foto */
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 .hero-scrim{
   position:absolute;inset:0;z-index:1;background:
     linear-gradient(to top,#041E1A 4%,rgba(6,43,38,.5) 42%,rgba(6,43,38,.15) 72%,rgba(6,43,38,.4) 100%),
