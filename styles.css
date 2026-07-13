@@ -166,6 +166,10 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 16px)}
 .btn--ghost:hover{border-color:var(--verde-selva)}
 .btn--ghost.on-dark{color:var(--salvia);border-color:var(--salvia)}   /* borde ≥3:1 sobre oscuro (WCAG 1.4.11) */
 .btn--ghost.on-dark:hover{border-color:var(--salvia);background:var(--salvia-10)}
+/* Botón PayPal (colores de marca) */
+.btn--paypal{background:#ffc439;color:#003087;border-color:#ffc439;font-weight:700}
+.btn--paypal:hover{background:#f0b72f;border-color:#f0b72f;transform:translateY(-2px)}
+.btn--paypal:active{transform:translateY(0)}
 
 /* ------------------------------------------------------------
    6. HEADER + NAV (scroll-spy)

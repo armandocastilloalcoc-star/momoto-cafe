@@ -72,8 +72,9 @@
       <div class="cart-drawer__resumen" id="cartResumen"></div>
       <div class="cart-drawer__acciones">
         <button type="button" class="btn btn--solid btn--block" id="cartPagar">Pagar con tarjeta</button>
+        <button type="button" class="btn btn--paypal btn--block" id="cartPaypal" hidden>Pagar con PayPal</button>
         <a class="btn btn--ghost btn--block" id="cartWhats" href="#" target="_blank" rel="noopener">Completar por WhatsApp</a>
-        <p class="cart-drawer__nota">Pago seguro procesado por Stripe. Envío por DHL a todo México.</p>
+        <p class="cart-drawer__nota">Pago seguro con Stripe o PayPal. Envío por DHL a todo México.</p>
       </div>
     </aside>`;
   document.body.appendChild(drawer);
@@ -81,6 +82,7 @@
   const $items = drawer.querySelector("#cartItems");
   const $resumen = drawer.querySelector("#cartResumen");
   const $pagar = drawer.querySelector("#cartPagar");
+  const $paypal = drawer.querySelector("#cartPaypal");
   const $whats = drawer.querySelector("#cartWhats");
   const $count = btnHeader.querySelector("#cartCount");
 
@@ -131,6 +133,7 @@
       <div class="cart-linea cart-linea--total"><span>Total</span><span>${formato(sub + env)}</span></div>`;
 
     $pagar.disabled = !carrito.length;
+    $paypal.disabled = !carrito.length;
 
     // Alternativa WhatsApp con el detalle del carrito
     const msg = "Hola Momoto, quiero pedir:\n" + carrito.map((it) => {
@@ -171,6 +174,39 @@
     } finally {
       $pagar.textContent = txt;
       $pagar.disabled = !carrito.length;
+    }
+  });
+
+  /* ───────────── Pago: PayPal (redirección) ───────────── */
+  // El botón solo aparece si PayPal está configurado en el servidor.
+  fetch("/api/paypal-config")
+    .then((r) => r.json())
+    .then((cfg) => { if (cfg && cfg.enabled) $paypal.hidden = false; })
+    .catch(() => {});
+
+  $paypal.addEventListener("click", async () => {
+    if (!carrito.length) return;
+    $paypal.disabled = true;
+    const txt = $paypal.textContent;
+    $paypal.textContent = "Preparando PayPal…";
+    try {
+      const r = await fetch("/api/paypal-create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: carrito })
+      });
+      const data = await r.json();
+      if (r.ok && data.url) {
+        if (typeof gtag === "function") gtag("event", "begin_checkout", { currency: "MXN", value: subtotal() + costoEnvio() });
+        window.location.href = data.url; // Aprobación de PayPal
+      } else {
+        alert(data.error || "No se pudo iniciar PayPal. Intenta de nuevo o pide por WhatsApp.");
+      }
+    } catch {
+      alert("Error de conexión. Intenta de nuevo o pide por WhatsApp.");
+    } finally {
+      $paypal.textContent = txt;
+      $paypal.disabled = !carrito.length;
     }
   });
 
