@@ -257,7 +257,7 @@ body.menu-open .wa-bar{display:none}
    8. HERO
    ------------------------------------------------------------ */
 .hero{
-  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  position:relative;min-height:100svh;display:flex;align-items:safe flex-end;
   background:var(--verde-sombra);overflow:hidden;
 }
 .hero-img{
@@ -303,6 +303,22 @@ body.menu-open .wa-bar{display:none}
   position:absolute;inset:0;z-index:1;background:
     linear-gradient(to top,#041E1A 4%,rgba(6,43,38,.5) 42%,rgba(6,43,38,.15) 72%,rgba(6,43,38,.4) 100%),
     radial-gradient(120% 80% at 50% 30%,transparent 40%,rgba(4,20,18,.55) 100%);
+}
+
+/* Pantallas BAJAS (laptops y móviles): que el hero QUEPA y el título de arriba
+   ("De la mata") siempre sea visible y accesible. Arregla la queja
+   "no puedo ver la parte de hasta arriba / no me deja subir". */
+@media (max-height:820px){
+  html.deck .hero-inner{padding-block:clamp(18px,4vh,40px)}
+  .hero h1{font-size:clamp(2.2rem,6.6vh,4.2rem)}
+  .hero-lead{font-size:1rem;margin-top:14px}
+  .hero-foot{margin-top:22px;gap:14px}
+  .hero-highlights{margin-top:18px;gap:10px}
+}
+@media (max-height:660px){
+  .hero h1{font-size:clamp(2rem,7vh,3rem)}
+  html.deck .hero-inner{padding-block:14px}
+  .hero-highlights{display:none}   /* en muy bajito, prioriza título + CTAs */
 }
 
 /* Ave momoto que entra volando y se transforma en el emblema del logo (derecha, sobre las ramas).
