@@ -178,10 +178,14 @@
   });
 
   /* ───────────── Pago: PayPal (redirección) ───────────── */
-  // El botón solo aparece si PayPal está configurado en el servidor.
+  // El botón solo aparece si PayPal está configurado Y en modo real (live).
+  // En sandbox queda oculto para clientes; se prueba con ?pptest=1 en la URL.
   fetch("/api/paypal-config")
     .then((r) => r.json())
-    .then((cfg) => { if (cfg && cfg.enabled) $paypal.hidden = false; })
+    .then((cfg) => {
+      const testMode = /[?&]pptest=1/.test(location.search);
+      if (cfg && cfg.enabled && (cfg.env === "live" || testMode)) $paypal.hidden = false;
+    })
     .catch(() => {});
 
   $paypal.addEventListener("click", async () => {
