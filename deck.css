@@ -109,3 +109,6 @@ body.deck-on-dark .deck-hint.show{opacity:1}
 .hero-fauna span{font-family:var(--ui);font-weight:600;font-size:.8rem;letter-spacing:.02em;
   color:var(--papel);background:rgba(244,239,230,.10);border:1px solid var(--salvia-borde);
   border-radius:999px;padding:.34rem .82rem;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+
+/* Estrellas de reseñas: tamaño correcto (los SVG no traían width/height) */
+.card-resena .estrellas svg{width:18px;height:18px;flex:none}
