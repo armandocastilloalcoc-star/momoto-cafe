@@ -28,8 +28,8 @@
   --salvia-10:rgba(143,184,166,.10);    /* hover ghost sobre oscuro */
 
   /* ---- Tipografía ---- */
-  --display:"Cormorant Garamond","Fraunces",Georgia,serif;
-  --ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --ui:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 
   /* ---- Espaciado base-8 ---- */
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px;
