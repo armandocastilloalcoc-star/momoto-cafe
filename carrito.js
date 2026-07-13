@@ -253,56 +253,26 @@
   const bandBtn = document.getElementById("pagoBandBtn");
   if (bandBtn) bandBtn.addEventListener("click", (e) => { e.preventDefault(); abrir(); });
 
-  /* ───────────── Rastreo de pedido (DHL) ───────────── */
-  const form = document.getElementById("rastreoForm");
-  if (form) {
-    const $in = document.getElementById("rastreoGuia");
+  /* ───────────── Rastreo multi-paquetería (Estafeta / DHL / FedEx) ───────────── */
+  const rastreoForm = document.getElementById("rastreoForm");
+  if (rastreoForm) {
+    const $g = document.getElementById("rastreoGuia");
     const $out = document.getElementById("rastreoResultado");
-
-    const fFecha = (iso) => {
-      try {
-        return new Date(iso).toLocaleString("es-MX", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
-      } catch { return iso; }
+    const TRACK = {
+      estafeta: (g) => g ? `https://rastreo.estafeta.com/RastreoWebInternet/consultaEnvio.do?numero=${encodeURIComponent(g)}` : "https://www.estafeta.com/herramientas/rastreo",
+      dhl:      (g) => g ? `https://www.dhl.com/mx-es/home/rastreo.html?tracking-id=${encodeURIComponent(g)}` : "https://www.dhl.com/mx-es/home/rastreo.html",
+      fedex:    (g) => g ? `https://www.fedex.com/fedextrack/?trknbr=${encodeURIComponent(g)}` : "https://www.fedex.com/es-mx/tracking.html",
     };
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const guia = $in.value.trim();
-      if (!guia) return;
-      $out.innerHTML = '<p class="rastreo-msg">Consultando tu guía…</p>';
-      try {
-        const r = await fetch(`/api/rastreo?guia=${encodeURIComponent(guia)}`);
-        const d = await r.json();
-        if (d.sinApi && d.url) {
-          window.open(d.url, "_blank", "noopener");
-          $out.innerHTML = '<p class="rastreo-msg">Abrimos el rastreo oficial de DHL en una pestaña nueva.</p>';
-          return;
-        }
-        if (!r.ok) {
-          $out.innerHTML = `<p class="rastreo-msg rastreo-msg--err">${d.error || "No pudimos consultar la guía."}</p>`;
-          return;
-        }
-        const entregado = /delivered|entregado/i.test(d.estatus) || d.estatusCodigo === "delivered";
-        $out.innerHTML = `
-          <div class="rastreo-card">
-            <div class="rastreo-head">
-              <span class="rastreo-badge${entregado ? " rastreo-badge--ok" : ""}">${entregado ? "Entregado" : "En camino"}</span>
-              <strong>${d.estatus}</strong>
-              ${d.origen || d.destino ? `<span class="rastreo-ruta">${d.origen || "—"} → ${d.destino || "—"}</span>` : ""}
-              ${d.entregaEstimada ? `<span class="rastreo-eta">Entrega estimada: ${fFecha(d.entregaEstimada)}</span>` : ""}
-            </div>
-            <ol class="rastreo-linea">
-              ${d.eventos.map((ev, i) => `
-                <li class="${i === 0 ? "is-actual" : ""}">
-                  <span class="rastreo-punto" aria-hidden="true"></span>
-                  <div><strong>${ev.descripcion}</strong><br><small>${[fFecha(ev.fecha), ev.lugar].filter(Boolean).join(" · ")}</small></div>
-                </li>`).join("")}
-            </ol>
-            <a href="${d.urlDHL}" target="_blank" rel="noopener" class="rastreo-dhl">Ver en DHL.com →</a>
-          </div>`;
-      } catch {
-        $out.innerHTML = '<p class="rastreo-msg rastreo-msg--err">Error de conexión. Intenta de nuevo.</p>';
-      }
+    const NOM = { estafeta: "Estafeta", dhl: "DHL", fedex: "FedEx" };
+    rastreoForm.addEventListener("submit", (e) => e.preventDefault());
+    rastreoForm.addEventListener("click", (e) => {
+      const b = e.target.closest(".rastreo-carrier");
+      if (!b) return;
+      const c = b.dataset.carrier;
+      const g = ($g.value || "").trim();
+      if (!g) { $out.textContent = "Escribe tu número de guía y elige la paquetería."; $g.focus(); return; }
+      window.open(TRACK[c](g), "_blank", "noopener");
+      $out.textContent = `Abrimos el rastreo de ${NOM[c]} en una pestaña nueva.`;
     });
   }
 

@@ -121,7 +121,7 @@
       "image": "https://www.momotocafe.com/assets/photos/cerezo.jpg",
       "description": "Café 100% orgánico de especialidad cultivado a la sombra por pequeños productores del sureste de México (Chiapas, Veracruz y Oaxaca) y tostado en Mérida, Yucatán.",
       "slogan": "De la tostadora a tu casa.",
-      "email": "info@momotocafe.com",
+      "email": "momoto.cafe@gmail.com",
       "telephone": "+52-999-318-3525",
       "address": {
         "@type": "PostalAddress",
@@ -139,7 +139,7 @@
           "@type": "ContactPoint",
           "contactType": "customer service",
           "telephone": "+52-999-318-3525",
-          "email": "info@momotocafe.com",
+          "email": "momoto.cafe@gmail.com",
           "areaServed": "MX",
           "availableLanguage": "Spanish"
         },
@@ -165,7 +165,7 @@
       "description": "Tostador y tienda de café 100% orgánico de especialidad en Mérida, Yucatán. Grano de sombra de altura del sureste de México (Chiapas, Veracruz y Oaxaca), en grano o molido, de 100 g a 1 kg. Venta en línea, retail y mayoreo.",
       "priceRange": "$$",
       "currenciesAccepted": "MXN",
-      "email": "info@momotocafe.com",
+      "email": "momoto.cafe@gmail.com",
       "telephone": "+52-999-318-3525",
       "address": {
         "@type": "PostalAddress",
@@ -360,7 +360,7 @@
   </a>
   <div class="mobile-nav__contact">
     <span>Tel. <a href="tel:+529993183525">999 318 3525</a></span>
-    <span><a href="mailto:info@momotocafe.com">info@momotocafe.com</a></span>
+    <span><a href="mailto:momoto.cafe@gmail.com">momoto.cafe@gmail.com</a></span>
   </div>
 </div>
 
@@ -384,7 +384,7 @@
       <div class="hero-inner">
         <span class="eyebrow eyebrow--noline">Café orgánico de especialidad · Sureste de México</span>
         <h1>De la tostadora<br>a tu <em>casa.</em></h1>
-        <p class="hero-lead">Cultivado a la sombra de la selva por pequeños productores de Chiapas, Veracruz y Oaxaca. Tostado en lotes pequeños en Mérida.</p>
+        <p class="hero-lead">Cultivado a la sombra de la selva por pequeños productores de Chiapas, Veracruz y Oaxaca. Tostado artesanal.</p>
         <div class="hero-fauna" aria-label="Nuestras cinco líneas de café">
           <span>Puma</span><span>Armadillo</span><span>Jaguar</span><span>Oso&nbsp;Negro</span><span>Flamingo</span>
         </div>
@@ -403,7 +403,7 @@
           </div>
           <div class="hero-highlight">
             <strong>Tostado bajo pedido</strong>
-            <span>Fresco en lotes pequeños en Mérida.</span>
+            <span>Fresco en lotes pequeños.</span>
           </div>
           <div class="hero-highlight">
             <strong>Envío a todo México</strong>
@@ -512,8 +512,8 @@
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span>Entrega en aproximadamente <b>4 días hábiles</b>.</span></li>
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Rastreo en tiempo real</b>: sigue tu paquete paso a paso, como una compra en línea. Te enviamos tu número de guía por WhatsApp en cuanto sale.</span></li>
             </ul>
-            <a class="rastreo" href="https://www.dhl.com/mx-es/home/rastreo.html" target="_blank" rel="noopener" aria-label="Rastrear mi pedido en tiempo real con DHL">
-              Rastrea tu pedido en tiempo real con DHL
+            <a class="rastreo deck-goto" href="#rastreo" aria-label="Ir a rastrear mi pedido">
+              Rastrea tu pedido
               <svg aria-hidden="true"><use href="#ico-arrow"/></svg>
             </a>
           </div>
@@ -737,19 +737,22 @@
         </div>
       </div>
 
-      <!-- Rastreo de pedido · DHL -->
+      <!-- Rastreo de pedido · Estafeta / DHL / FedEx (según código postal) -->
       <div class="rastreo-band" id="rastreo" data-anim>
         <div class="rastreo-band__text">
           <h3>Rastrea tu pedido</h3>
-          <p>Cuando enviamos tu café te compartimos por WhatsApp tu número de guía <strong>DHL</strong>. Ingrésalo aquí y mira en qué punto de la ruta va tu paquete.</p>
+          <p>Enviamos por <strong>Estafeta, DHL o FedEx</strong> según tu código postal. Te compartimos por WhatsApp tu <strong>número de guía</strong> y la paquetería. Escríbelo y elige tu paquetería:</p>
         </div>
         <form class="rastreo-band__form" id="rastreoForm">
-          <label class="visually-hidden" for="rastreoGuia">Número de guía DHL</label>
-          <input type="text" id="rastreoGuia" name="guia" inputmode="text" autocomplete="off"
-                 placeholder="Ej. 1234567890" required pattern="[A-Za-z0-9]{8,22}">
-          <button type="submit" class="btn btn--onDark">Rastrear</button>
+          <label class="visually-hidden" for="rastreoGuia">Número de guía</label>
+          <input type="text" id="rastreoGuia" name="guia" inputmode="text" autocomplete="off" placeholder="Número de guía">
+          <div class="rastreo-carriers">
+            <button type="button" class="btn btn--onDark rastreo-carrier" data-carrier="estafeta">Estafeta</button>
+            <button type="button" class="btn btn--onDark rastreo-carrier" data-carrier="dhl">DHL</button>
+            <button type="button" class="btn btn--onDark rastreo-carrier" data-carrier="fedex">FedEx</button>
+          </div>
         </form>
-        <div id="rastreoResultado" class="rastreo-band__resultado" aria-live="polite"></div>
+        <p id="rastreoResultado" class="rastreo-band__resultado" aria-live="polite"></p>
       </div>
     </div>
   </section>
@@ -759,7 +762,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span id="year">2026</span> Momoto Café · Tel. <a href="tel:+529993183525">999 318 3525</a> · <a href="mailto:info@momotocafe.com">info@momotocafe.com</a></p>
+    <p>© <span id="year">2026</span> Momoto Café · Tel. <a href="tel:+529993183525">999 318 3525</a> · <a href="mailto:momoto.cafe@gmail.com">momoto.cafe@gmail.com</a></p>
     <p>Chi de México, S.A. de C.V. · RFC CME080827RH1 · <a href="aviso-de-privacidad.html">Aviso de Privacidad</a></p>
   </div>
 </footer>

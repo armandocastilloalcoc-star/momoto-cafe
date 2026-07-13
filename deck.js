@@ -81,11 +81,19 @@
     // Solo el menú y el logo cambian de apartado (NO #pagoBandBtn ni otros enlaces)
     var navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav__links a[href^="#"], .brand[href^="#"], .deck-goto[href^="#"]');
     Array.prototype.forEach.call(navLinks, function (a) {
-      var idx = idIndex((a.getAttribute("href") || "").slice(1));
-      if (idx < 0) return;
+      var hid = (a.getAttribute("href") || "").slice(1);
+      var idx = idIndex(hid);
+      var inEl = idx < 0 ? document.getElementById(hid) : null;
+      if (idx < 0 && !inEl) return;   // hash desconocido: no interceptar
       a.addEventListener("click", function (e) {
         e.preventDefault();
-        go(idx);
+        if (idx >= 0) { go(idx); }
+        else {   // enlace a un elemento DENTRO de un apartado (p. ej. #rastreo en Contacto)
+          var host = inEl.closest && inEl.closest(".hero, .chapter");
+          var hi = host ? idIndex(host.id) : -1;
+          go(hi >= 0 ? hi : 0);
+          setTimeout(function () { try { inEl.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (er) { inEl.scrollIntoView(); } }, 420);
+        }
         var n = document.getElementById("mobileNav"), t = document.getElementById("navToggle");
         if (n) { n.classList.remove("open"); n.setAttribute("aria-hidden", "true"); }
         if (t) { t.classList.remove("open"); t.setAttribute("aria-expanded", "false"); }
@@ -124,6 +132,16 @@
 
   buildDots();
   bindNav();
-  var start = location.hash ? idIndex(location.hash.slice(1)) : 0;
-  setActive(start >= 0 ? start : 0);
+  // Abre el apartado del hash; si el hash apunta a un elemento dentro de un apartado
+  // (p. ej. #rastreo desde gracias.html), abre ese apartado y baja hasta él.
+  (function () {
+    var hid = location.hash ? location.hash.slice(1) : "";
+    var idx = hid ? idIndex(hid) : 0;
+    if (idx >= 0) { setActive(idx); return; }
+    var el = document.getElementById(hid);
+    var host = el && el.closest ? el.closest(".hero, .chapter") : null;
+    var hi = host ? idIndex(host.id) : 0;
+    setActive(hi >= 0 ? hi : 0);
+    if (el) setTimeout(function () { try { el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) { el.scrollIntoView(); } }, 460);
+  })();
 })();
