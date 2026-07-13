@@ -476,6 +476,7 @@ body.menu-open .wa-bar{display:none}
 }
 .duo-frame{position:relative;aspect-ratio:4/5;overflow:hidden}
 .duo-frame img{width:100%;height:100%;object-fit:cover;filter:url(#duo) contrast(1.05)}
+.duo-frame video{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.96) contrast(1.03)}
 .duo-frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--salvia-borde)}
 .duo-frame--light::after{box-shadow:inset 0 0 0 1px var(--arena)}
 

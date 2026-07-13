@@ -376,18 +376,7 @@
       <source src="assets/video/hero.webm" type="video/webm">
       <source src="assets/video/hero.mp4" type="video/mp4">
     </video>
-    <!-- El ave momoto fotorreal abre el hero y hace cross-fade a la escena de café + logo -->
-    <video class="hero-ave-video" id="heroAve" autoplay muted playsinline preload="auto" poster="assets/video/hero-ave-poster.jpg" aria-hidden="true">
-      <source src="assets/video/hero-ave.webm" type="video/webm">
-      <source src="assets/video/hero-ave.mp4" type="video/mp4">
-    </video>
     <div class="hero-scrim"></div>
-    <!-- Puente de luz: funde el ave con la escena de café sin corte -->
-    <div class="hero-bloom" aria-hidden="true"></div>
-    <!-- El emblema del logo (colores reales sobre disco) aparece al cerrar el relevo -->
-    <div class="hero-brand" aria-hidden="true">
-      <img class="hero-brand__logo" src="assets/hero-emblema-disc.png" alt="" width="340" height="340" decoding="async">
-    </div>
     <div class="wrap">
       <div class="hero-inner">
         <span class="eyebrow eyebrow--noline">Café orgánico de especialidad · Sureste de México</span>
@@ -537,20 +526,11 @@
     <div class="wrap">
       <div class="nosotros">
         <div class="duo-frame duo-frame--light" data-anim>
-          <picture>
-            <source type="image/webp" srcset="assets/photos/personal.webp">
-            <img src="assets/photos/personal.jpg" alt="Equipo de Momoto Café seleccionando y empacando el café en Mérida" width="1600" height="1200" loading="lazy" decoding="async">
-          </picture>
-          <!-- Marca de agua: momoto en line-art -->
-          <svg class="duo-mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 20c7-4 15-3 19 3 2 3 2 7 0 10"/>
-            <path d="M18 20c-3 2-4 6-2 9 2 3 6 3 9 1"/>
-            <circle cx="21" cy="24" r="1.2" fill="currentColor" stroke="none"/>
-            <path d="M14 20l4 1"/>
-            <path d="M37 33c1 6 0 14-2 22"/>
-            <path d="M37 40l-3 20"/>
-            <path d="M35 60l3 1M32 60l3 1"/>
-          </svg>
+          <!-- El ave momoto que da nombre a la marca: el video encaja con el texto de al lado -->
+          <video class="duo-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-ave-poster.jpg" aria-label="El momoto, ave de la selva del sureste de México que da nombre a Momoto Café">
+            <source src="assets/video/hero-ave.webm" type="video/webm">
+            <source src="assets/video/hero-ave.mp4" type="video/mp4">
+          </video>
         </div>
         <div data-anim style="--anim-delay:.1s">
           <span class="eyebrow">Quiénes somos</span>
@@ -864,25 +844,6 @@
 })();
 </script>
 
-<!-- Relevo del hero: el ave fotorreal cierra y aparece la escena de café + el logo -->
-<script>
-(function(){
-  var hero = document.getElementById("inicio");
-  var ave = document.getElementById("heroAve");
-  if(!hero || !ave) return;
-  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    hero.classList.add("hero-done"); return;   // sin animación: escena café + logo directo
-  }
-  var done = false;
-  function finish(){ if(done) return; done = true; hero.classList.add("hero-done"); }
-  ave.addEventListener("timeupdate", function(){
-    if(ave.duration && ave.currentTime >= ave.duration - 2.1) finish();
-  });
-  ave.addEventListener("ended", finish);
-  ave.addEventListener("error", finish);
-  setTimeout(finish, 8200);   // respaldo por si el video no reporta tiempo
-})();
-</script>
 <script src="main.js" defer></script>
 <script src="carrito.js" defer></script>
 <script src="deck.js" defer></script>
