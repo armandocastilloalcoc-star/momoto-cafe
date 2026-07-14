@@ -12,6 +12,33 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Analytics (mismo setup que el sitio: Consent Mode v2, denegado por defecto) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34JLPW88G"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config','G-B34JLPW88G',{anonymize_ip:true});
+  gtag('config','AW-2837740315');
+  try{
+    var _c=JSON.parse(localStorage.getItem('momoto_cookie_consent_v1')||'null');
+    window.__momotoConsent = !!(_c && _c.accepted && (!_c.expiry || new Date(_c.expiry)>new Date()));
+    if(window.__momotoConsent) gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
+  }catch(e){ window.__momotoConsent=false; }
+</script>
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('consent', window.__momotoConsent ? 'grant' : 'revoke');
+  fbq('init','3606104369544075');
+  fbq('track','PageView');
+</script>
 </head>
 <body>
 <main class="gracias-hero">
@@ -56,7 +83,17 @@
     if(sid){
       fetch('/api/verify-session?session_id='+encodeURIComponent(sid))
         .then(function(r){return r.json();})
-        .then(function(d){ if(d && d.paid===false) neutral(); })
+        .then(function(d){
+          if(d && d.paid===false){ neutral(); return; }
+          if(d && d.paid && window.__momotoConsent){
+            var cur=(d.currency||'mxn').toUpperCase();
+            var val=(d.amount!=null)? d.amount/100 : undefined;
+            try{ gtag('event','purchase',{transaction_id:sid,value:val,currency:cur}); }catch(_){}
+            try{ if(typeof fbq==='function') fbq('track','Purchase',{value:val,currency:cur}); }catch(_){}
+            /* Google Ads: reemplaza PURCHASE_LABEL por la etiqueta de tu conversión de COMPRA (AW-2837740315/xxxx) */
+            try{ gtag('event','conversion',{send_to:'AW-2837740315/PURCHASE_LABEL',value:val,currency:cur,transaction_id:sid}); }catch(_){}
+          }
+        })
         .catch(function(){});
     }
   }catch(e){}
