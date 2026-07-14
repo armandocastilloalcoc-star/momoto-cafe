@@ -81,6 +81,9 @@ body.deck-on-dark .deck-dot.on{background:var(--salvia);border-color:var(--salvi
   color:var(--papel-60);pointer-events:none;opacity:0;transition:opacity .6s ease}
 body.deck-on-dark .deck-hint.show{opacity:1}
 
+/* El panel recibe el foco al cambiar de apartado (a11y): sin anillo visible en el contenedor */
+html.deck .hero:focus,html.deck .chapter:focus{outline:none}
+
 @media(max-width:680px){
   .deck-dots{right:9px;gap:10px}
   .deck-dot{width:10px;height:10px}

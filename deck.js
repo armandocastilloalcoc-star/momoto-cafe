@@ -28,12 +28,20 @@
     w.appendChild(footer);
   }
 
+  // a11y: paneles enfocables (mover el foco al cambiar de apartado) + región que anuncia el cambio a lectores de pantalla
+  panels.forEach(function (p) { p.setAttribute("tabindex", "-1"); });
+  var live = document.createElement("div");
+  live.className = "visually-hidden";
+  live.setAttribute("aria-live", "polite");
+  live.setAttribute("aria-atomic", "true");
+  body.appendChild(live);
+
   function idIndex(id) { for (var i = 0; i < panels.length; i++) if (panels[i].id === id) return i; return -1; }
 
   function buildDots() {
     dotsWrap = document.createElement("div");
     dotsWrap.className = "deck-dots";
-    dotsWrap.setAttribute("role", "tablist");
+    dotsWrap.setAttribute("role", "group");
     dotsWrap.setAttribute("aria-label", "Apartados del sitio");
     panels.forEach(function (p, i) {
       var b = document.createElement("button");
@@ -66,7 +74,7 @@
     });
     if (dotsWrap) Array.prototype.forEach.call(dotsWrap.children, function (b, idx) {
       b.classList.toggle("on", idx === i);
-      b.setAttribute("aria-selected", idx === i ? "true" : "false");
+      if (idx === i) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
     });
     try { history.replaceState(null, "", "#" + active.id); } catch (e) {}
   }
@@ -75,6 +83,9 @@
     if (lock || i === current || i < 0 || i >= panels.length) return;
     hideHint();
     lock = true; setActive(i);
+    var p = panels[i];
+    try { live.textContent = "Apartado: " + (LABELS[p.id] || p.id); } catch (e) {}
+    try { p.focus({ preventScroll: true }); } catch (e) {}
     setTimeout(function () { lock = false; }, 560);
   }
 

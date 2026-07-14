@@ -94,12 +94,24 @@
 
   let _lastFocus = null;
   const _panel = drawer.querySelector(".cart-drawer__panel");
+  // a11y: inertiza el fondo mientras el carrito está abierto (el foco y el lector de pantalla no escapan del modal)
+  let _inerted = [];
+  function bgInert(on) {
+    _inerted.forEach(function (el) { el.inert = false; el.removeAttribute("aria-hidden"); });
+    _inerted = [];
+    if (on) Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el === drawer || el.tagName === "SCRIPT" || el.tagName === "STYLE") return;
+      el.inert = true; el.setAttribute("aria-hidden", "true"); _inerted.push(el);
+    });
+  }
   function abrir()  {
     _lastFocus = document.activeElement;
     drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); document.body.classList.add("cart-open");
+    bgInert(true);
     const close = drawer.querySelector("#cartClose"); if (close) close.focus();
   }
   function cerrar() {
+    bgInert(false);
     drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true"); document.body.classList.remove("cart-open");
     if (_lastFocus && _lastFocus.focus) _lastFocus.focus();
   }
