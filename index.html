@@ -21,7 +21,7 @@
 <meta name="google-site-verification" content="kAVAtAHx87B4g8WXrbRXIhz_-B1ddsedb0_7OIQjz7E" />
 
 <!-- ═══════════════════════ ANALÍTICA Y TRACKING ═══════════════════════ -->
-<!-- IDs configurados: GA4 G-B34JLPW88G · Meta Pixel 3606104369544075 · Google Ads AW-2837740315 (FALTA la etiqueta de conversión de Ads, ver más abajo) -->
+<!-- IDs configurados: GA4 G-B34JLPW88G · Meta Pixel 3606104369544075 · Google Ads AW-18317016595 (FALTA la etiqueta de conversión de Ads, ver más abajo) -->
 <!-- Google Consent Mode v2: consentimiento DENEGADO por defecto (LFPDPPP/GDPR); el banner lo actualiza -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,7 +36,7 @@
 <script>
   gtag('js', new Date());
   gtag('config', 'G-B34JLPW88G', { 'anonymize_ip': true });   /* GA4 */
-  gtag('config', 'AW-2837740315');                             /* Google Ads (remarketing + conversion linker) */
+  gtag('config', 'AW-18317016595');                             /* Google Ads (remarketing + conversion linker) */
 </script>
 <!-- Meta (Facebook) Pixel -->
 <script>
@@ -840,8 +840,8 @@
     if(!a) return;
     try{ if(typeof gtag==="function") gtag('event','generate_lead',{event_category:'whatsapp',event_label:a.href,transport_type:'beacon'}); }catch(_){}
     try{ if(typeof fbq==="function") fbq('track','Lead'); }catch(_){}
-    /* Google Ads: FALTA la etiqueta de conversión. Al crear la acción de conversión en Ads, reemplaza ETIQUETA por el código que aparece tras la barra (AW-2837740315/xxxxxxxx). */
-    try{ if(typeof gtag==="function") gtag('event','conversion',{send_to:'AW-2837740315/ETIQUETA'}); }catch(_){}
+    /* Google Ads: FALTA la etiqueta de conversión. Al crear la acción de conversión en Ads, reemplaza ETIQUETA por el código que aparece tras la barra (AW-18317016595/xxxxxxxx). */
+    try{ if(typeof gtag==="function") gtag('event','conversion',{send_to:'AW-18317016595/ETIQUETA'}); }catch(_){}
   });
 })();
 </script>

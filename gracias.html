@@ -22,7 +22,7 @@
 <script>
   gtag('js', new Date());
   gtag('config','G-B34JLPW88G',{anonymize_ip:true});
-  gtag('config','AW-2837740315');
+  gtag('config','AW-18317016595');
   try{
     var _c=JSON.parse(localStorage.getItem('momoto_cookie_consent_v1')||'null');
     window.__momotoConsent = !!(_c && _c.accepted && (!_c.expiry || new Date(_c.expiry)>new Date()));
@@ -90,8 +90,8 @@
             var val=(d.amount!=null)? d.amount/100 : undefined;
             try{ gtag('event','purchase',{transaction_id:sid,value:val,currency:cur}); }catch(_){}
             try{ if(typeof fbq==='function') fbq('track','Purchase',{value:val,currency:cur}); }catch(_){}
-            /* Google Ads: reemplaza PURCHASE_LABEL por la etiqueta de tu conversión de COMPRA (AW-2837740315/xxxx) */
-            try{ gtag('event','conversion',{send_to:'AW-2837740315/PURCHASE_LABEL',value:val,currency:cur,transaction_id:sid}); }catch(_){}
+            /* Google Ads: reemplaza PURCHASE_LABEL por la etiqueta de tu conversión de COMPRA (AW-18317016595/xxxx) */
+            try{ gtag('event','conversion',{send_to:'AW-18317016595/PURCHASE_LABEL',value:val,currency:cur,transaction_id:sid}); }catch(_){}
           }
         })
         .catch(function(){});
