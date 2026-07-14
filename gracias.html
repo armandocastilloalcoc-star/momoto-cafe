@@ -42,7 +42,17 @@
     }
     if(!proof){ neutral(); return; }
     localStorage.removeItem('momoto_carrito_v1'); // pago confirmado: vaciar carrito
-    if(q.get('sub')==='ok' && card){ var hs=card.querySelector('h1'); if(hs) hs.textContent='¡Bienvenido a tu suscripción!'; }
+    if(q.get('sub')==='ok' && card){
+      var hs=card.querySelector('h1'); if(hs) hs.textContent='¡Bienvenido a tu suscripción!';
+      if(sid){
+        var mng=document.createElement('a');
+        mng.className='btn btn--onDark';
+        mng.href='/api/customer-portal?session_id='+encodeURIComponent(sid);
+        mng.textContent='Gestiona o cancela tu suscripción';
+        var firstBtn=card.querySelector('.btn');
+        if(firstBtn) firstBtn.parentNode.insertBefore(mng, firstBtn);
+      }
+    }
     if(sid){
       fetch('/api/verify-session?session_id='+encodeURIComponent(sid))
         .then(function(r){return r.json();})

@@ -58,7 +58,7 @@ export default async (req) => {
   p.append("mode", "subscription");
   p.append("currency", "mxn");
   p.append("locale", "es");
-  p.append("success_url", `${base}/gracias.html?sub=ok`);
+  p.append("success_url", `${base}/gracias.html?sub=ok&session_id={CHECKOUT_SESSION_ID}`);
   p.append("cancel_url", `${base}/#cafe`);
   p.append("shipping_address_collection[allowed_countries][0]", "MX");
   p.append("phone_number_collection[enabled]", "true");
