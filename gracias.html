@@ -26,7 +26,31 @@
     <a class="btn btn--ghost on-dark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20acabo%20de%20pagar%20mi%20pedido" target="_blank" rel="noopener">Avisar por WhatsApp</a>
   </div>
 </main>
-<!-- Pago exitoso: vaciar el carrito para evitar doble compra al regresar -->
-<script>try{localStorage.removeItem('momoto_carrito_v1');}catch(e){}</script>
+<!-- Confirma el pago (evita declarar "pago recibido" a visitantes directos) y vacía el carrito -->
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    var sid=q.get('session_id');
+    var proof = !!sid || q.get('pp')==='ok' || q.get('sub')==='ok';
+    var card=document.querySelector('.gracias-card');
+    function neutral(){
+      if(!card) return;
+      var h=card.querySelector('h1'), p=card.querySelector('p');
+      if(h) h.textContent='Aquí verás tu confirmación';
+      if(p) p.innerHTML='Cuando completes un pago, esta página confirmará tu pedido. ¿Buscas nuestro café?';
+    }
+    if(!proof){ neutral(); return; }
+    localStorage.removeItem('momoto_carrito_v1'); // pago confirmado: vaciar carrito
+    if(q.get('sub')==='ok' && card){ var hs=card.querySelector('h1'); if(hs) hs.textContent='¡Bienvenido a tu suscripción!'; }
+    if(sid){
+      fetch('/api/verify-session?session_id='+encodeURIComponent(sid))
+        .then(function(r){return r.json();})
+        .then(function(d){ if(d && d.paid===false) neutral(); })
+        .catch(function(){});
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>

@@ -73,8 +73,27 @@
 
   function go(i) {
     if (lock || i === current || i < 0 || i >= panels.length) return;
+    hideHint();
     lock = true; setActive(i);
     setTimeout(function () { lock = false; }, 560);
+  }
+
+  // Pista de navegación (una sola vez): revive .deck-hint (existía en el CSS pero deck.js nunca lo creaba)
+  var hintEl = null, hintDone = false;
+  function buildHint() {
+    try { if (localStorage.getItem("momoto_deck_hint") === "1") return; } catch (e) {}
+    hintEl = document.createElement("div");
+    hintEl.className = "deck-hint";
+    hintEl.textContent = "Desliza o usa el menú";
+    body.appendChild(hintEl);
+    setTimeout(function () { if (hintEl && !hintDone) hintEl.classList.add("show"); }, 1200);
+    setTimeout(hideHint, 8000);
+  }
+  function hideHint() {
+    if (hintDone) return;
+    hintDone = true;
+    if (hintEl) hintEl.classList.remove("show");
+    try { localStorage.setItem("momoto_deck_hint", "1"); } catch (e) {}
   }
 
   function bindNav() {
@@ -132,6 +151,7 @@
 
   buildDots();
   bindNav();
+  buildHint();
   // Abre el apartado del hash; si el hash apunta a un elemento dentro de un apartado
   // (p. ej. #rastreo desde gracias.html), abre ese apartado y baja hasta él.
   (function () {

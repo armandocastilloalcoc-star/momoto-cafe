@@ -28,6 +28,12 @@
   const costoEnvio = () => 0; // Envío GRATIS a todo México
   const totalPiezas = () => carrito.reduce((s, it) => s + it.cantidad, 0);
 
+  // Robustez: descarta ítems corruptos u obsoletos del localStorage para que un dato malo no rompa el carrito
+  carrito = carrito
+    .filter((it) => it && lineaDe(it.id) && GRAMOS[it.tamano] && datos.etiquetasMolienda[it.molienda] && Number(it.cantidad) > 0)
+    .map((it) => ({ id: it.id, tamano: it.tamano, molienda: it.molienda, cantidad: Math.min(50, Math.max(1, Math.floor(Number(it.cantidad)))) }));
+  guardar();
+
   function agregar(id, tamano, molienda) {
     const ya = carrito.find((it) => it.id === id && it.tamano === tamano && it.molienda === molienda);
     if (ya) ya.cantidad = Math.min(ya.cantidad + 1, 50);
@@ -257,6 +263,10 @@
     subBtn.className = "btn btn--sub btn--block btn-suscribir";
     subBtn.textContent = "Suscríbete cada mes · −10%";
     pedirBtn.parentNode.insertBefore(subBtn, pedirBtn);
+    const subNota = document.createElement("small");
+    subNota.className = "sub-nota";
+    subNota.textContent = "Cancela cuando quieras · sin permanencia";
+    pedirBtn.parentNode.insertBefore(subNota, pedirBtn);
     subBtn.addEventListener("click", async () => {
       const tamano = card.querySelector('[data-grupo="tamano"] [aria-checked="true"]').dataset.tamano;
       const molienda = card.querySelector('[data-grupo="molienda"] [aria-checked="true"]').dataset.molienda;
