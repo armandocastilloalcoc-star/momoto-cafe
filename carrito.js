@@ -247,6 +247,25 @@
       agregar(card.dataset.linea, tamano, molienda);
       if (typeof gtag === "function") gtag("event", "add_to_cart", { currency: "MXN" });
     });
+
+    // Suscripción mensual (−10%) — cobro recurrente con Stripe
+    const subBtn = document.createElement("button");
+    subBtn.type = "button";
+    subBtn.className = "btn btn--sub btn--block btn-suscribir";
+    subBtn.textContent = "Suscríbete cada mes · −10%";
+    pedirBtn.parentNode.insertBefore(subBtn, pedirBtn);
+    subBtn.addEventListener("click", async () => {
+      const tamano = card.querySelector('[data-grupo="tamano"] [aria-checked="true"]').dataset.tamano;
+      const molienda = card.querySelector('[data-grupo="molienda"] [aria-checked="true"]').dataset.molienda;
+      subBtn.disabled = true; const txt = subBtn.textContent; subBtn.textContent = "Preparando…";
+      try {
+        const r = await fetch("/api/create-subscription", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: card.dataset.linea, tamano, molienda }) });
+        const d = await r.json();
+        if (r.ok && d.url) window.location.href = d.url;
+        else alert(d.error || "No se pudo iniciar la suscripción. Intenta de nuevo o pide por WhatsApp.");
+      } catch { alert("Error de conexión. Intenta de nuevo."); }
+      finally { subBtn.textContent = txt; subBtn.disabled = false; }
+    });
   });
 
   // La banda de pago ahora abre el carrito
