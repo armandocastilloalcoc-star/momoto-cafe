@@ -3,7 +3,7 @@
    Crea una sesión de Stripe Checkout con los precios REALES
    validados del lado del servidor (nunca se confía en el cliente).
    Requiere la variable de entorno STRIPE_SECRET_KEY en Netlify.
-   Envío: $199 MXN · GRATIS a partir de 5 kg (5000 g).
+   Envío: GRATIS a todo México.
    ============================================================ */
 
 // Lista de precios oficial 2026 (MXN) — misma fuente que main.js
@@ -97,10 +97,10 @@ export default async (req) => {
     p.append(`line_items[${i}][price_data][product_data][name]`, l.nombre);
   });
 
-  // Envío: gratis desde 5 kg; si no, tarifa fija DHL nacional
+  // Envío GRATIS a todo México
   p.append("shipping_options[0][shipping_rate_data][type]", "fixed_amount");
-  p.append("shipping_options[0][shipping_rate_data][display_name]", envioGratis ? "Envío GRATIS (pedido de 5 kg o más) · DHL" : "Envío nacional · DHL");
-  p.append("shipping_options[0][shipping_rate_data][fixed_amount][amount]", envioGratis ? "0" : String(ENVIO_TARIFA_CENTAVOS));
+  p.append("shipping_options[0][shipping_rate_data][display_name]", "Envío GRATIS a todo México");
+  p.append("shipping_options[0][shipping_rate_data][fixed_amount][amount]", "0");
   p.append("shipping_options[0][shipping_rate_data][fixed_amount][currency]", "mxn");
   p.append("shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]", "business_day");
   p.append("shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]", "2");

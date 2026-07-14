@@ -50,7 +50,7 @@ export default async (req) => {
   }
 
   const cafeCentavos = Math.round(precio * DESCUENTO * 100);
-  const envioCentavos = GRAMOS[tamano] >= ENVIO_GRATIS_DESDE_G ? 0 : ENVIO_TARIFA_CENTAVOS;
+  const envioCentavos = 0; // Envío GRATIS a todo México
   const nombre = `Suscripción mensual · Café ${NOMBRES[id]} · ${ETIQ_TAM[tamano]} · ${ETIQ_MOL[molienda]} (−10%)`;
   const base = process.env.URL || "https://www.momotocafe.com";
 

@@ -3,7 +3,7 @@
    Carrito de compras + pago del total con Stripe Checkout
    + rastreo de pedido (DHL).
    Sin dependencias. Usa window.__MOMOTO expuesto por main.js.
-   Envío: $199 MXN · GRATIS a partir de 5 kg.
+   Envío: GRATIS a todo México.
    ============================================================ */
 (function () {
   "use strict";
@@ -25,7 +25,7 @@
   const lineaDe = (id) => datos.lineas.find((l) => l.id === id);
   const pesoTotal = () => carrito.reduce((s, it) => s + GRAMOS[it.tamano] * it.cantidad, 0);
   const subtotal  = () => carrito.reduce((s, it) => s + precio(lineaDe(it.id), it.tamano, it.molienda) * it.cantidad, 0);
-  const costoEnvio = () => (carrito.length === 0 || pesoTotal() >= ENVIO_GRATIS_DESDE) ? 0 : ENVIO_TARIFA;
+  const costoEnvio = () => 0; // Envío GRATIS a todo México
   const totalPiezas = () => carrito.reduce((s, it) => s + it.cantidad, 0);
 
   function agregar(id, tamano, molienda) {
@@ -74,7 +74,7 @@
         <button type="button" class="btn btn--solid btn--block" id="cartPagar">Pagar con tarjeta</button>
         <button type="button" class="btn btn--paypal btn--block" id="cartPaypal" hidden>Pagar con PayPal</button>
         <a class="btn btn--ghost btn--block" id="cartWhats" href="#" target="_blank" rel="noopener">Completar por WhatsApp</a>
-        <p class="cart-drawer__nota">Pago seguro con Stripe o PayPal. Envío por DHL a todo México.</p>
+        <p class="cart-drawer__nota">Pago seguro con Stripe o PayPal. <strong>Envío GRATIS</strong> a todo México.</p>
       </div>
     </aside>`;
   document.body.appendChild(drawer);
@@ -142,14 +142,12 @@
       }).join("");
     }
 
-    // Resumen
-    const sub = subtotal(), env = costoEnvio(), peso = pesoTotal();
-    const falta = ENVIO_GRATIS_DESDE - peso;
+    // Resumen — envío GRATIS a todo México
+    const sub = subtotal();
     $resumen.innerHTML = !carrito.length ? "" : `
       <div class="cart-linea"><span>Subtotal</span><span>${formato(sub)}</span></div>
-      <div class="cart-linea"><span>Envío DHL ${peso >= ENVIO_GRATIS_DESDE ? "(¡GRATIS desde 5 kg!)" : "(nacional)"}</span><span>${env === 0 ? "GRATIS" : formato(env)}</span></div>
-      ${falta > 0 && falta <= 2000 ? `<p class="cart-hint">Te faltan ${falta >= 1000 ? (falta / 1000).toFixed(1).replace(".0", "") + " kg" : falta + " g"} para envío GRATIS.</p>` : ""}
-      <div class="cart-linea cart-linea--total"><span>Total</span><span>${formato(sub + env)}</span></div>`;
+      <div class="cart-linea"><span>Envío a todo México</span><span class="cart-envio-gratis">GRATIS</span></div>
+      <div class="cart-linea cart-linea--total"><span>Total</span><span>${formato(sub)}</span></div>`;
 
     $pagar.disabled = !carrito.length;
     $paypal.disabled = !carrito.length;
@@ -158,15 +156,20 @@
     const msg = "Hola Momoto, quiero pedir:\n" + carrito.map((it) => {
       const l = lineaDe(it.id);
       return `• ${it.cantidad}× ${l.nombre} ${datos.etiquetasTamano[it.tamano]} ${datos.etiquetasMolienda[it.molienda]}`;
-    }).join("\n") + `\nTotal estimado: ${formato(sub + env)}`;
+    }).join("\n") + `\nTotal estimado: ${formato(sub)} · Envío GRATIS`;
     $whats.href = `https://wa.me/${datos.whatsapp}?text=${encodeURIComponent(msg)}`;
   }
 
   $items.addEventListener("click", (e) => {
     const menos = e.target.closest("[data-menos]");
     const mas = e.target.closest("[data-mas]");
-    if (menos) cambiarCantidad(Number(menos.dataset.menos), -1);
-    if (mas) cambiarCantidad(Number(mas.dataset.mas), +1);
+    if (!menos && !mas) return;
+    const idx = Number(menos ? menos.dataset.menos : mas.dataset.mas);
+    cambiarCantidad(idx, menos ? -1 : +1);
+    // a11y: devolver el foco al mismo control tras el re-render del carrito
+    const sel = menos ? `[data-menos="${idx}"]` : `[data-mas="${idx}"]`;
+    const el = $items.querySelector(sel) || $items.querySelector("button") || $pagar;
+    if (el && el.focus) el.focus();
   });
 
   /* ───────────── Pago: Stripe Checkout ───────────── */
@@ -237,7 +240,7 @@
   document.querySelectorAll(".ficha").forEach((card) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "btn btn--ghost btn--block btn-carrito";
+    btn.className = "btn btn--solid btn--block btn-carrito";
     btn.textContent = "Agregar al carrito";
     const pedirBtn = card.querySelector(".btn-pedido");
     pedirBtn.parentNode.insertBefore(btn, pedirBtn);

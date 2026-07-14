@@ -97,7 +97,7 @@ export default async (req) => {
     });
   }
 
-  const envio = (pesoTotal >= ENVIO_GRATIS_DESDE_G) ? 0 : ENVIO_TARIFA;
+  const envio = 0; // Envío GRATIS a todo México
   const total = itemTotal + envio;
   const base = process.env.URL || "https://www.momotocafe.com";
 

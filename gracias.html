@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¡Gracias por tu pedido! | Momoto Café</title>
-<meta name="description" content="Tu pago fue recibido. Tostamos tu café bajo pedido y te avisamos por WhatsApp cuando salga con DHL.">
+<meta name="description" content="Tu pago fue recibido. Tostamos tu café bajo pedido y te avisamos por WhatsApp con tu número de guía en cuanto salga.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#062B26">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -26,5 +26,7 @@
     <a class="btn btn--ghost on-dark" href="https://wa.me/5219993183525?text=Hola%20Momoto%2C%20acabo%20de%20pagar%20mi%20pedido" target="_blank" rel="noopener">Avisar por WhatsApp</a>
   </div>
 </main>
+<!-- Pago exitoso: vaciar el carrito para evitar doble compra al regresar -->
+<script>try{localStorage.removeItem('momoto_carrito_v1');}catch(e){}</script>
 </body>
 </html>

@@ -164,7 +164,7 @@
           <span class="precio" aria-live="polite">${formatoPrecio(precio0)}</span>
           <span class="precio-note">${MOMOTO.etiquetasTamano[d.tamano]} · ${MOMOTO.etiquetasMolienda[d.molienda]}</span>
         </div>
-        <a class="btn btn--solid btn--block btn-pedido" href="${linkPedido(l, d.tamano, d.molienda, precio0)}" target="_blank" rel="noopener">
+        <a class="btn btn--ghost btn--block btn-pedido" href="${linkPedido(l, d.tamano, d.molienda, precio0)}" target="_blank" rel="noopener">
           ${svgWa}Pedir ${l.nombre} por WhatsApp
         </a>
       </div>

@@ -325,7 +325,7 @@
 <!-- ============ HEADER / NAV ============ -->
 <header class="site-header" id="siteHeader">
   <a class="brand" href="#inicio" aria-label="Momoto Café — inicio">
-    <img src="assets/logo-color.png" alt="Momoto Café" width="119" height="40" decoding="async">
+    <img src="assets/logo-color-sm.png" alt="Momoto Café" width="119" height="40" decoding="async">
   </a>
   <nav class="nav" aria-label="Principal">
     <ul class="nav-links">
@@ -369,21 +369,25 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
     <div class="hero-stage">
-    <img class="hero-img" src="assets/video/hero-poster.jpg" alt="Taza de café Momoto humeante sobre madera, entre cafetos a la sombra de la selva del sureste de México" width="1280" height="720" fetchpriority="high" decoding="async">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
+    <picture>
+      <source srcset="assets/video/hero-poster.webp" type="image/webp">
+      <img class="hero-img" src="assets/video/hero-poster.jpg" alt="Taza de café Momoto humeante sobre madera, entre cafetos a la sombra de la selva del sureste de México" width="1280" height="720" fetchpriority="high" decoding="async">
+    </picture>
+    <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" poster="assets/video/hero-poster.webp" aria-hidden="true">
       <source src="assets/video/hero.webm" type="video/webm">
       <source src="assets/video/hero.mp4" type="video/mp4">
     </video>
+    <script>/* Video del hero: solo en pantallas grandes y sin reduce-motion (no descarga el video en móvil) */(function(){var v=document.getElementById('heroVideo');if(!v)return;try{if(window.matchMedia('(min-width:768px)').matches&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.play().catch(function(){});}}catch(e){}})();</script>
     <div class="hero-scrim"></div>
     <!-- El ave momoto entra volando y se transforma en el emblema del logo (una vez, al cargar) -->
     <div class="hero-brandfly" aria-hidden="true">
-      <img class="hero-brandfly__ave" src="assets/hero-ave.png" alt="" width="560" height="453" decoding="async">
-      <img class="hero-brandfly__logo" src="assets/hero-emblema-real.png?v=5" alt="" width="800" height="800" decoding="async">
+      <img class="hero-brandfly__ave" src="assets/hero-ave.png" alt="" width="560" height="453" decoding="async" loading="lazy">
+      <img class="hero-brandfly__logo" src="assets/hero-emblema-real.png?v=5" alt="" width="800" height="800" decoding="async" loading="lazy">
     </div>
     <div class="wrap">
       <div class="hero-inner">
         <span class="eyebrow eyebrow--noline">Café orgánico de especialidad · Sureste de México</span>
-        <h1>Tostado<br><em>artesanal.</em></h1>
+        <h1>Café orgánico,<br>tostado <em>artesanal.</em></h1>
         <p class="hero-lead">Cultivado a la sombra de la selva por pequeños productores de Chiapas, Veracruz y Oaxaca. Tostado en lotes pequeños.</p>
         <div class="hero-fauna" aria-label="Nuestras cinco líneas de café">
           <span>Puma</span><span>Armadillo</span><span>Jaguar</span><span>Oso&nbsp;Negro</span><span>Flamingo</span>
@@ -406,8 +410,8 @@
             <span>En lotes pequeños.</span>
           </div>
           <div class="hero-highlight">
-            <strong>Envío a todo México</strong>
-            <span>Pedido y seguimiento por WhatsApp.</span>
+            <strong>Envío gratis</strong>
+            <span>A todo México, sin mínimo de compra.</span>
           </div>
         </div>
       </div>
@@ -506,9 +510,9 @@
         <div class="envio">
           <svg class="envio__ico" aria-hidden="true"><use href="#ico-box"/></svg>
           <div>
-            <p>Enviamos a toda la República por paquetería. El costo depende de tu región y te lo confirmamos por WhatsApp antes de que pagues.</p>
+            <p>Enviamos a toda la República por paquetería, <b>sin costo de envío en ningún pedido</b>. Te compartimos por WhatsApp tu número de guía en cuanto sale.</p>
             <ul class="envio-list">
-              <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Envío gratis</b> en pedidos de <b>5 kg o más</b>.</span></li>
+              <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Envío gratis</b> en <b>todos</b> los pedidos, a toda la República.</span></li>
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span>Entrega en aproximadamente <b>4 días hábiles</b>.</span></li>
               <li><svg aria-hidden="true"><use href="#ico-check"/></svg><span><b>Rastreo en tiempo real</b>: sigue tu paquete paso a paso, como una compra en línea. Te enviamos tu número de guía por WhatsApp en cuanto sale.</span></li>
             </ul>
@@ -557,8 +561,8 @@
       <!-- Historia -->
       <div class="historia" data-anim>
         <h3>Nuestra historia</h3>
-        <p>Fundado en 2012, Momoto Café nació con la misión de acercar el café mexicano de especialidad a más personas, trabajando directamente con productores y promoviendo prácticas de comercio justo. Desde sus inicios, la empresa se distinguió por seleccionar cafés de alta calidad, desarrollar perfiles de tueste propios y ofrecer una experiencia basada en la excelencia, la trazabilidad y el respeto por el origen del grano.</p>
-        <p>A lo largo de más de doce años, Momoto Café consolidó una sólida presencia en el mercado nacional, desarrollando canales de distribución, alianzas comerciales y una identidad reconocida por su compromiso con la calidad, la innovación y la cultura del café mexicano.</p>
+        <p>Fundado en 2012, Momoto Café nace con la misión de acercar el café mexicano de especialidad a más personas, trabajando directamente con productores y promoviendo prácticas de comercio justo. Nos distinguimos por seleccionar cafés de alta calidad, desarrollar nuestros propios perfiles de tueste y ofrecer una experiencia basada en la excelencia, la trazabilidad y el respeto por el origen del grano.</p>
+        <p>Desde 2012 hemos construido una sólida presencia en el mercado nacional, con canales de distribución, alianzas comerciales y una identidad reconocida por su compromiso con la calidad, la innovación y la cultura del café mexicano.</p>
       </div>
 
       <!-- Equipo -->
@@ -568,17 +572,17 @@
           <article class="equipo-card">
             <h4>Lourdes Solís Letayf</h4>
             <span class="equipo-rol">Cofundadora</span>
-            <p>Participó en el desarrollo y consolidación de la empresa desde sus inicios. Su trabajo estuvo enfocado en la estrategia comercial, la administración y el fortalecimiento de las relaciones con clientes y aliados, contribuyendo al crecimiento y posicionamiento de la marca.</p>
+            <p>Acompaña el desarrollo de la empresa desde sus inicios. Su trabajo se enfoca en la estrategia comercial, la administración y el fortalecimiento de las relaciones con clientes y aliados, impulsando el crecimiento y posicionamiento de la marca.</p>
           </article>
           <article class="equipo-card">
             <h4>Jorge Solís Letayf</h4>
             <span class="equipo-rol">Cofundador y Director General</span>
-            <p>Lideró la estrategia y expansión de la empresa durante más de doce años. Impulsó el desarrollo de nuevos productos, la creación de alianzas comerciales y la promoción del café mexicano de especialidad, consolidando a Momoto Café como una marca reconocida por su calidad e innovación.</p>
+            <p>Lidera la estrategia y la expansión de la empresa desde 2012. Impulsa el desarrollo de nuevos productos, la creación de alianzas comerciales y la promoción del café mexicano de especialidad, consolidando a Momoto Café como una marca reconocida por su calidad e innovación.</p>
           </article>
           <article class="equipo-card">
             <h4>Gustavo Abad</h4>
             <span class="equipo-rol">Director de Producción y Maestro Tostador</span>
-            <p>Responsable del desarrollo de los perfiles de tueste y del control de calidad del café. Su experiencia y conocimiento permitieron mantener altos estándares de producción, resaltando las características únicas de cada origen y consolidando la identidad sensorial que distinguió a la marca.</p>
+            <p>Responsable del desarrollo de los perfiles de tueste y del control de calidad del café. Su experiencia y conocimiento mantienen altos estándares de producción, resaltando las características únicas de cada origen y la identidad sensorial que distingue a la marca.</p>
           </article>
         </div>
       </div>
@@ -642,20 +646,10 @@
           <blockquote>«Buscábamos un buen café para nuestros restaurantes y Momoto nos convenció desde el principio. Tiene sabor, consistencia y una calidad que se nota.»</blockquote>
           <cite>— Rafael López Rubí · Restaurantero, Puebla</cite>
         </figure>
-        <figure class="card-resena" data-anim style="--anim-delay:.12s">
-          <div class="estrellas" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg></div>
-          <blockquote>«Momoto tiene un sabor muy especial. Se nota que es un café bien cuidado, con buen aroma y una calidad que realmente se disfruta.»</blockquote>
-          <cite>— Coco Alcocer · CDMX</cite>
-        </figure>
         <figure class="card-resena" data-anim>
           <div class="estrellas" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg></div>
           <blockquote>«Desde que probé Momoto me gustó mucho. Tiene mucha calidad.»</blockquote>
           <cite>— Fernando Bueno · CDMX</cite>
-        </figure>
-        <figure class="card-resena" data-anim style="--anim-delay:.06s">
-          <div class="estrellas" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg></div>
-          <blockquote>«Primero fui cliente y después amigo. La pasión de Lou, Gustavo y Jorge me acercó al café — a servirlo en mis restaurantes y a ser proveedor. Aprendí de café, aprendí de ellos, y aprendí a estar orgulloso del café mexicano.»</blockquote>
-          <cite>— Armando · Cliente y aliado, Villahermosa</cite>
         </figure>
         <figure class="card-resena" data-anim style="--anim-delay:.12s">
           <div class="estrellas" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg><svg aria-hidden="true"><use href="#ico-star"/></svg></div>
@@ -726,7 +720,7 @@
       <div class="pago-band" data-anim>
         <div class="pago-band__text">
           <h3>Paga tu pedido con tarjeta</h3>
-          <p>Arma tu carrito, el envío se calcula solo (<strong>GRATIS desde 5 kg</strong>) y paga el total de forma segura con tarjeta. Procesado por <strong>Stripe</strong>.</p>
+          <p>Arma tu carrito, <strong>el envío es gratis</strong> y paga el total de forma segura con tarjeta. Procesado por <strong>Stripe</strong>.</p>
         </div>
         <div class="pago-band__cta">
           <a class="btn btn--onDark" id="pagoBandBtn" href="#cafe" aria-label="Abrir mi carrito y pagar con tarjeta">
